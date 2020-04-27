@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'email'=>'niels984@gmail.com',
             'phone'=>1,
             'role_id'=>1,
-            'address_id'=>1,
             'password'=>bcrypt(12345678)]);
 
     }

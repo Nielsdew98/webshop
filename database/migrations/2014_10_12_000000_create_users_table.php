@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable()->default('NULL');
             $table->integer('role_id')->index()->unsigned()->nullable();
             $table->string('phone');
-            $table->integer('address_id')->index()->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -17,8 +17,8 @@ class CreateAwardsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('year');
-            $table->integer('product_id');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
