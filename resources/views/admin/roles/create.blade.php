@@ -4,13 +4,28 @@
 @endsection
 @section('content')
     @include('includes.form_error')
-    {!! Form::open(['method'=>'POST', 'action'=>'AdminRolesController@store']) !!}
-    <div class="form-group">
-        {!! Form::label('name', 'Name:') !!}
-        {!! Form::text('name', null,['class'=>'form-control']) !!}
+    <div class="col-lg-10 offset-lg-1 mb-5">
+        <form class="w-100" method="POST" action="{{action('AdminRolesController@store')}}">
+            @csrf {{--Geeft een hidden token mee zodat injecties niet kunnen gebeuren--}}
+            @method('POST')
+            <div class="card mb-2">
+                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">General</h5>
+                <div class="p-2">
+                    <div class="form-group position-relative mb-3">
+                        <input type="text" class="owninput" name="name"><span class="highlight"></span><span class="bar"></span>
+                        <label class="ownlabel">Role Name</label>
+                    </div>
+                    <div class="row w-100">
+                        <div class="col-12">
+                            <div class="text-center mb-3">
+                                <button class="btn w-sm btn-success waves-effect waves-light" type="submit"><i class="fas fa-plus-circle">Create
+                                        Role</i></button>
+                                <a href="{{route('roles.index')}}" class="btn w-sm btn-light waves-effect">Cancel</a>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        {!! Form::submit('Create role', ['class' => 'btn btn-primary']) !!}
-    </div>
-    {!! Form::close() !!}
 @endsection

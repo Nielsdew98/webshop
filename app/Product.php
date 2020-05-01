@@ -28,4 +28,12 @@ class Product extends Model
     public function stock(){
         return $this->belongsTo('App\Stock');
     }
+    public function default_image()
+    {
+        return $this->hasOne('App\Photo')->where('main_image',1);
+    }
+    public function detail_images()
+    {
+        return $this->hasMany('App\Photo')->where('main_image',0);
+    }
 }

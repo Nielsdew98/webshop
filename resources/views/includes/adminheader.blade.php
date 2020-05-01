@@ -15,3 +15,4 @@
 <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('css/Ubold.min.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">

@@ -3,27 +3,30 @@
     Categorie bewerken
 @endsection
 @section('content')
-    <div class="col-lg-10 offset-lg-1">
-        <h1>Categorie bewerken</h1>
-    </div>
-    <div class="col-12">
-        @include('includes.form_error')
-        {!! Form::open(['method'=>'PATCH', 'action'=>['AdminCategoriesController@update', $category->id]]) !!}
-        <div class="form-group">
-            {!! Form::label('name', 'Name:') !!}
-            {!! Form::text('name', $category->name,['class'=>'form-control']) !!}
-        </div>
-        <div class="row">
-            <div class="form-group">
-                {!! Form::submit('Update category', ['class' =>'btn btn-warning']) !!}
-                {!! Form::close() !!}
+    <div class="col-lg-10 offset-lg-1 mb-5">
+        <form class="w-100" method="POST" action="{{action('AdminCategoriesController@update',$category->id)}}">
+            @csrf {{--Geeft een hidden token mee zodat injecties niet kunnen gebeuren--}}
+            @method('PATCH')
+            <div class="card mb-2">
+                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">General</h5>
+                <div class="p-2">
+                    <div class="form-group position-relative mb-3">
+                        <input type="text" class="owninput" name="name" value="{{$category->name}}"><span class="highlight"></span><span
+                            class="bar"></span>
+                        <label class="ownlabel"> Name</label>
+                    </div>
+                    <div class="row w-100">
+                        <div class="col-12">
+                            <div class="text-center mb-3">
+                                <button class="btn w-sm btn-success waves-effect waves-light" type="submit"><i class="fas fa-plus-circle">Update
+                                        Category</i></button>
+                                <a href="{{route('categories.index')}}" class="btn w-sm btn-light waves-effect">Cancel</a>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                </div>
             </div>
-            {!! Form::open(['method'=>'DELETE','action'=>['AdminCategoriesController@destroy',$category->id]]) !!}
-            <div class="form-group">
-                {!! Form::submit('Delete category', ['class' => 'btn btn-danger ml-2']) !!}
-            </div>
-            {!! Form::close() !!}
-        </div>
+        </form>
     </div>
 
 @endsection

@@ -8,6 +8,7 @@ use App\Photo;
 use App\Product;
 use App\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Array_;
@@ -22,7 +23,7 @@ class AdminProductsController extends Controller
     public function index()
     {
         //
-        $products = Product::with('photos')->withTrashed()->paginate(8);
+        $products = Product::with('default_image')->withTrashed()->paginate(8);
         return view('admin.products.index',compact('products'));
     }
 
@@ -34,7 +35,8 @@ class AdminProductsController extends Controller
     public function create()
     {
         //
-        $categories= Category::pluck('name','id')->all();
+        $categories= Category::select('name','id')->get();
+
         return view('admin.products.create',compact('categories'));
     }
 
@@ -49,7 +51,7 @@ class AdminProductsController extends Controller
         //
         $product = new Product();
         $product->title = $request->title;
-        $product->short_description = $request->shortdescription;
+        $product->short_description = $request->short_description;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->is_active = $request->is_active;
@@ -57,10 +59,16 @@ class AdminProductsController extends Controller
         $stock = Stock::create(['stock'=>$request->stock]);
         $product->stock_id = $stock->id;
         $product->save();
+        if ($request->main_image){
+            $photo =$request->main_image;
+            $name = time() . $photo->getClientOriginalName();
+            $photo->move('images/products', $name);
+            Photo::create(['file'=>$name,'product_id'=>$product->id,'main_image'=>1]);
+        }
         if($request->images){
             foreach ($request->images as $file){
                 $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
+                $file->move('images/products', $name);
                 Photo::create(['file'=>$name,'product_id'=>$product->id]);
             }
         }
@@ -94,7 +102,7 @@ class AdminProductsController extends Controller
     public function edit(Product $product)
     {
         //
-        $categories= Category::pluck('name','id')->all();
+        $categories= Category::select('name','id')->get();
         return view('admin.products.edit',compact('categories','product'));
     }
 
@@ -109,10 +117,21 @@ class AdminProductsController extends Controller
     {
         //
         $input = $request->all();
+
+        if ($request->main_image){
+                if (!empty($product->default_image)){
+                    unlink(public_path().$product->default_image->file);
+                    $product->default_image->delete();
+                }
+                $photo =$request->main_image;
+                $name = time() . $photo->getClientOriginalName();
+                $photo->move('images/products', $name);
+                Photo::create(['file'=>$name,'product_id'=>$product->id,'main_image'=>1]);
+        }
         if($request->images){
             foreach ($request->images as $file){
                 $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
+                $file->move('images/products', $name);
                 Photo::create(['file'=>$name,'product_id'=>$product->id]);
             }
         }
@@ -139,7 +158,7 @@ class AdminProductsController extends Controller
         //
         if($product->photos !== null){
             foreach ($product->photos as $photo){
-                unlink(public_path() . $photo->file);
+                unlink(public_path('images/products/') . $photo->file);
                 $photo->delete();
             }
         }

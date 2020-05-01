@@ -40,4 +40,5 @@ Route::get('admin/products/restore/{product}','AdminProductsController@productRe
 
 
 
+
 Route::get('/home', 'HomeController@index')->name('home');

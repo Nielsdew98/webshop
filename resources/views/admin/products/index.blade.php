@@ -38,8 +38,8 @@
         <div class="row w-100">
             @if($products)
                 @foreach($products as $product)
-                    <div class="col-md-6 col-xl-3 mb-3">
-                        <div class="card p-2 product-box">
+                    <div class="col-md-6 col-xl-3 mb-3 d-flex align-items-stretch">
+                        <div class="card p-2 product-box ">
                             <div class="product-action row">
                                 <a href="{{route('products.edit',$product->id)}}" class="btn btn-success btn-xs waves-effect waves-light w-sm h-25
                                 mr-2"><i class="mdi mdi-pencil"></i></a>
@@ -57,10 +57,8 @@
                             </div>
 
                             <div>
-                                @if(!empty($product->photos->first()->file))
-                                    <img src="{{asset($product->photos->first()->file)}}" alt="product-pic" class="img-fluid" />
-                                @endif
-
+                                <img src="{{$product->default_image ? asset($product->default_image->file) : 'GEEN FOTO'}}" alt="product-pic"
+                                         class="img-fluid" />
                             </div>
                             <div class="product-info">
                                 <div class="row align-items-center">

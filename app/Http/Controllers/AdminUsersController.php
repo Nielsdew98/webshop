@@ -32,7 +32,7 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
-        $roles = Role::pluck('name', 'id')->all();
+        $roles = Role::select('name', 'id')->get();
         return view('admin.users.create',compact('roles'));
     }
 
@@ -77,7 +77,7 @@ class AdminUsersController extends Controller
     public function edit(User $user)
     {
         //
-        $roles = Role::pluck('name','id')->all();
+        $roles = Role::select('name','id')->get();
         return view ('admin.users.edit', compact('user', 'roles'));
     }
 

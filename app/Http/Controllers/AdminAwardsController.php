@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Award;
+use App\Product;
 use Illuminate\Http\Request;
 
 class AdminAwardsController extends Controller
@@ -27,6 +28,8 @@ class AdminAwardsController extends Controller
     public function create()
     {
         //
+        $products = Product::select('title','id')->get();
+        return view('admin.awards.create',compact('products'));
     }
 
     /**
@@ -38,6 +41,9 @@ class AdminAwardsController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        Award::create($input);
+        return redirect('admin/awards');
     }
 
     /**
@@ -60,6 +66,9 @@ class AdminAwardsController extends Controller
     public function edit($id)
     {
         //
+        $products = Product::select('title','id')->get();
+        $award = Award::findOrFail($id);
+        return view('admin.awards.edit',compact('products','award'));
     }
 
     /**
@@ -72,6 +81,7 @@ class AdminAwardsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**

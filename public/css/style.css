@@ -1,0 +1,96 @@
+
+.owninput {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    -webkit-appearance: none;
+    display: block;
+    background: #fafafa;
+    color: #636363;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+.owninput:focus { outline: none; }
+
+
+/* Label */
+
+.ownlabel {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: all 0.2s ease;
+}
+
+
+/* active */
+
+.owninput:focus ~ .ownlabel, .owninput.used ~ .ownlabel {
+    top: -20px;
+    transform: scale(.75); left: -2px;
+    /* font-size: 14px; */
+    color: #4a89dc;
+}
+
+
+/* Underline */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #4a89dc;
+    transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+.owninput:focus ~ .bar:before, .owninput:focus ~ .bar:after { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active */
+
+.owninput:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+    from { background: #4a89dc; }
+    to 	{ width: 0; background: transparent; }
+}
+

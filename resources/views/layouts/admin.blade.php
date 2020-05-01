@@ -41,9 +41,10 @@
     @include('includes.adminfooter')
 </div>
 <!-- END wrapper -->
+
 <script src="{{asset('js/vendor.min.js')}}"></script>
 <script src="{{asset('js/dropzone.min.js')}}"></script>
-<script src="{{asset('js/users.js')}}"></script>
+<script src="{{asset('js/style.js')}}"></script>
 <!-- App js -->
 <script src="{{asset('js/app.min.js')}}"></script>
 

@@ -40,7 +40,7 @@
                                     <tbody>
                                     <tr>
                                         <td>User Role:</td>
-                                        <td> @foreach($user->roles as $role){{$role->name}}@endforeach</td>
+                                        <td> @foreach($user->roles as $role)<p>{{$role->name}}</p>@endforeach</td>
                                     </tr>
                                     <tr>
                                         <td>Registered since:</td>

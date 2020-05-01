@@ -11,7 +11,7 @@ class Award extends Model
       'name','year','product_id'
     ];
 
-    public function products(){
+    public function product(){
         return $this->belongsTo('App\Product');
     }
 }

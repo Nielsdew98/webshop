@@ -19,5 +19,15 @@ $(document).ready(function() {
                 currentButton.html('<i class="mdi mdi-chevron-down text-muted"></i>');
             }
         });
-    })
+    });
+    $('.owninput').blur(function() {
+        var $this = $(this);
+        if ($this.val()){
+            $this.addClass('used');
+        } else{
+            $this.removeClass('used');
+        }
+
+    });
+
 });

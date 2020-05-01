@@ -7,6 +7,7 @@
         <div class="card p-2">
             <div class="row mb-4 align-items-center">
                 <div class="col-lg-8">
+
                 {!! Form::open(['method'=>'GET', 'action'=>'AdminMediasController@index']) !!}
                         <div class="form-group">
                             {!! Form::label('search','Selecteer het product waarvan je de fotos wilt zien:') !!}
