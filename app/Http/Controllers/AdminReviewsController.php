@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminReviewsController extends Controller
 {
@@ -38,6 +40,19 @@ class AdminReviewsController extends Controller
     public function store(Request $request)
     {
         //
+
+        $input = $request->all();
+        $review = new Review();
+        $review->user_id = Auth::id();
+        $review->product_id = $request->product_id;
+        $review->rating = $request->rate;
+        $review->title = $request->reviewTitle;
+        $review->body = $request->reviewBody;
+
+        $review->save();
+        return  redirect()->back();
+
+
     }
 
     /**
@@ -72,6 +87,8 @@ class AdminReviewsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Review::findOrFail($id)->update($request->all());
+        return redirect('admin/reviews');
     }
 
     /**
@@ -83,5 +100,7 @@ class AdminReviewsController extends Controller
     public function destroy($id)
     {
         //
+        Review::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

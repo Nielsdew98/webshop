@@ -168,7 +168,7 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td>
-                                            <img src="assets/images/products/product-1.jpg" alt="product-pic" height="36" />
+                                            <img src="{{asset($product->default_image->file)}}" alt="product-pic" height="36" />
                                         </td>
                                         <td>
                                          <span class="ml-2">

@@ -133,7 +133,7 @@
                             <label class="ownlabel">Categories</label>
                         </div>
                         <div class="form-group position-relative mb-3">
-                            <input type="number" step="0.05" class="owninput" name="price" value="{{$product->price}}"><span
+                            <input type="number" step="0.01" class="owninput" name="price" value="{{$product->price}}"><span
                                 class="highlight"></span><span class="bar"></span>
                             <label class="ownlabel">Price</label>
                         </div>
@@ -188,7 +188,8 @@
                     <h5 class="text-uppercase mt-0 mb-3 bg-light p-2">Stock</h5>
                     <div class="p-2">
                         <div class="form-group position-relative mb-3">
-                            <input type="text" class="owninput" name="stock" value="{{$product->stock->stock}}"><span class="highlight"></span><span
+                            <input type="text" class="owninput" name="stock" value="{{$product->stock ? $product->stock->stock : 0}}"><span
+                                class="highlight"></span><span
                                 class="bar"></span>
                             <label class="ownlabel">Stock</label>
                         </div>

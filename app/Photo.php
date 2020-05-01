@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Photo extends Model
 {
     //
+
     protected $uploads = '/images/products/';
     protected $fillable = [
         'file','product_id','main_image'

@@ -1,0 +1,501 @@
+ @import './fonts.scss';
+$image-path : "../images";
+$oranje: #FB8122;
+$rood:  #f84545;
+$zwart: #1d1e22;
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+//General
+.absolutemiddle{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+}
+html{
+  scroll-behavior: smooth;
+}
+.zwart{
+  background-color: $zwart !important;
+}
+body{
+background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+}
+//lettertypes
+@mixin tekst($family:'Roboto',$weight:400){
+  font-family: $family,sans-serif;
+  weight:$weight;
+}
+@mixin titels($family:'Ubuntu',$weight:700,$transform:uppercase){
+  font-family: $family,sans-serif;
+  weight:$weight;
+  text-transform: $transform;
+}
+body{
+  @include tekst;
+  font-size: 1rem;
+}
+.img-fluid{
+  width: 100%;
+}
+h1 {
+  @include titels;
+  letter-spacing: 1pt;
+  font-size: 2rem;
+}
+//header
+.navbar{
+  background-color:$zwart;
+}
+#banner{
+  background-image: url($image-path +"/bg2.jpg");
+  background-size: 100vw 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 95vh;
+}
+#brand{
+  @include titels;
+  font-size: 1.13rem;
+  color: $oranje;
+}
+#bannertekst{
+  display: block;
+  width: 90vw;
+  h1{
+    color: #f84545;
+    text-shadow: #474747 3px 5px 2px;
+  }
+}
+#arrow{
+  bottom: 10%;
+  a{
+    font-size: 2rem;
+    color: white !important;
+  }
+}
+.btnhover{
+  color: #31302B !important;
+  background: #FFF;
+  padding: 12px 17px;
+  border: 3px solid #31302B;
+  background: linear-gradient(to right, white 50%, $rood 50%);
+  background-size: 200% 100%;
+  background-position:left bottom;
+  transition: all 0.5s ease;
+  &:hover{
+    background-position: right bottom;
+      color: #31302B !important;
+  }
+}
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.3);
+  opacity: 0;
+}
+.overlay:hover {
+  opacity: 1;
+}
+#shipping{
+  li{
+    height: 100px;
+  }
+}
+#instagram{
+  article {
+    filter: brightness(20%);
+    transition: all 2s ease;
+    &:hover {
+      filter: brightness(100%);
+    }
+  }
+}
+#instagramtekst{
+  color: #fff;
+  font-size: 3rem;
+  a{
+    font-size: 1rem;
+  }
+}
+.newsletter {
+  background: #f2f2f2;
+}
+
+.newsletter .content {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2; }
+.newsletter .content .form-control {
+  height: 50px;
+  border-color: #ffffff;
+  border-radius:0;
+}
+.newsletter .content.form-control:focus {
+  box-shadow: none;
+  border: 2px solid $zwart;
+}
+.newsletter .content .btnnews {
+  min-height: 50px;
+  border-radius:0;
+  background: $zwart;
+  color: #fff;
+  border: 0;
+}
+#promoties{
+  li{
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    text-transform: uppercase;
+  }
+  span{
+    display: block;
+    font-size: 2rem;
+  }
+}
+h2{
+  @include titels;
+  font-size: 1.88rem;
+  color: $zwart;
+
+}
+footer{
+  justify-content: space-between;
+  bottom: 0;
+  ul {
+    list-style-type: none;
+    a{
+      color: $zwart !important;
+    }
+  }
+}
+//links
+a{
+  color: $oranje !important;
+  &:hover{
+    color: $rood !important;
+    text-decoration: none !important;
+  }
+}
+
+//searchbar
+.search_input{
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+.searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 200px;
+  caret-color:$oranje;
+  border-bottom: 1px solid  $oranje;
+  transition: width 0.4s linear;
+}
+.searchbar:hover > .search_icon{
+  background: white;
+  color:$oranje;
+}
+.search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  color: $oranje;
+  text-decoration:none;
+}
+
+//productpagina
+
+//shoppagina
+.product,.product .product-image{
+  overflow:hidden
+}
+.product{
+  transition:all .5s ease 0s;
+  margin-bottom: 18px;
+  &:hover{
+    box-shadow:0 0 10px rgba(0,0,0,.3)
+  }
+  .product-image{
+    img{
+      transition:all .5s ease 0s;
+      &:hover{
+        transform:scale(1.1)
+      }
+    }
+  }
+  &:hover .product-content{
+    opacity: 0;
+  }
+  &:hover .social{
+    opacity: 1;
+    bottom: 20px;
+  }
+  .product-content{
+    transition:all .5s ease 0s;
+  }
+  .social{
+    list-style:none;
+    opacity:0;
+    transform:translateX(-50%);
+    position:absolute;
+    bottom:-50%;
+    left:50%;
+    z-index:1;
+    transition:all .5s ease 0s;
+    li{
+      a{
+        color:#909090 !important;
+        line-height:45px;
+        height:45px;
+        width:45px;
+        transition:all .3s ease-in-out;
+        &:hover{
+          color:#fff !important;
+          background-color:$oranje;
+          width:80px
+        }
+      }
+    }
+  }
+}
+.accordion > .card > .card-header {
+  border-radius: 0 !important;
+ margin-bottom: 0px !important;
+}
+.card,.card-header{
+  border: 0 !important;
+  background: none !important;
+  margin: 0 !important;
+}
+.card-header{
+  border-bottom: 2px solid $oranje !important;
+  button{
+    color: $zwart !important;
+  }
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.7s;
+  #closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 2rem;
+    margin-left: 50px;
+    border: 0;
+    background: 0;
+  }
+}
+
+//Winkelmand
+.prijs{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+//Contactpagina
+#contactformulier{
+  input,textarea{
+    border: 0;
+    border-bottom: 1px solid $zwart;
+    background: none;
+  }
+}
+#gegevens{
+  margin-bottom: 10px;
+  article{
+    &:hover{
+      background-color: white;
+    }
+  }
+}
+#googlemaps{
+  height: 600px;
+}
+
+//input
+#amount2{
+  background: none;
+  border: none;
+}
+h3{
+  font-size: 1rem;
+}
+/** ENKEL CSS GROTER DAN MOBIEL**/
+/** MEDIA QUERIES **/
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  #gegevens{
+    margin-bottom: -5%;
+  }
+
+  h1{
+    font-size: 2rem;
+  }
+}
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .modal-dialog{
+    max-width: 700px;
+  }
+  h3{
+    font-size: 2rem;
+  }
+  h1{
+    font-size: 3rem;
+  }
+}
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  #dice {
+    span {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      font-size: 3rem;
+      color: #555;
+      margin: 5px;
+      transition: all .4s ease-in-out;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .1);
+      transform-origin: center;
+      position: relative;
+      &.one-h {
+        transform: skew(0deg, -20deg) rotatey(45deg) translate(310px, 50px);
+      }
+      &.two-e {
+        transform: rotatex(68deg) rotatez(45deg) translate(-27px, -237px);
+        z-index: 1;
+      }
+      &.three-l {
+        transform: skew(0deg, 20deg) rotatey(-45deg);
+        margin-right: -10px;
+        z-index: 1;
+      }
+      &.four-l {
+        transform: skew(0deg, -20deg) rotatey(45deg);
+        margin-left: -10px;
+        z-index: 1;
+      }
+      &.five-o {
+        transform: rotatex(-68deg) rotatez(-45deg) translate(-175px, -40px);
+        z-index: 0;
+      }
+      &.six-e {
+        transform: skew(0deg, 20deg) rotatey(-45deg) translate(-312px, 50px);
+        z-index: 0;
+      }
+    }
+    .dice-box {
+      display: flex;
+      &:hover {
+        span {
+          transform: initial;
+          margin: 5px;
+          animation: .4s spin ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+/* Position the faces */
+.producttekst{
+  top: 50%;
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
+//hover effect
+.cube:after {
+  background-color: #ffffff;
+  position: absolute;
+  content: "";
+  display: block;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+.cube:hover .producttekst,
+.cube.hover .producttekst {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.cube:hover:after,
+.cube.hover:after {
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+  opacity: 0.9;
+}
+
+//sterren
+ .rate {
+     float: left;
+     height: 46px;
+     padding: 0 10px;
+ }
+ .rate:not(:checked) > input {
+     position:absolute;
+     top:-9999px;
+ }
+ .rate:not(:checked) > label {
+     float:right;
+     width:1em;
+     overflow:hidden;
+     white-space:nowrap;
+     cursor:pointer;
+     font-size:30px;
+     color:#ccc;
+ }
+ .rate:not(:checked) > label:before {
+     content: '★ ';
+ }
+ .rate > input:checked ~ label {
+     color: $oranje;
+ }
+ .rate:not(:checked) > label:hover,
+ .rate:not(:checked) > label:hover ~ label {
+     color: $oranje;
+ }
+ .rate > input:checked + label:hover,
+ .rate > input:checked + label:hover ~ label,
+ .rate > input:checked ~ label:hover,
+ .rate > input:checked ~ label:hover ~ label,
+ .rate > label:hover ~ input:checked ~ label {
+     color: $oranje;
+ }

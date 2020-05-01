@@ -158,7 +158,6 @@ class AdminProductsController extends Controller
         //
         if($product->photos !== null){
             foreach ($product->photos as $photo){
-                unlink(public_path('images/products/') . $photo->file);
                 $photo->delete();
             }
         }

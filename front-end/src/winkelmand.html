@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Winkemand</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,500i%7CUbuntu:700&display=swap" rel="stylesheet">
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/>
+
+</head>
+<body>
+<header>
+    <nav class="navbar  navbar-dark navbar-expand-lg">
+        <div class="border-bottom w-75  d-lg-flex align-items-center justify-content-around mx-auto">
+            <a href="tel:050252525"><i class="mr-2 fas fa-phone-alt"></i><span class="d-none d-lg-inline-flex">050 25 25 25</span></a>
+            <a class="navbar-brand d-flex align-items-center p-0" href="index.html">
+                <p id="brand" class="text-uppercase">Boardgamers Delight</p>
+            </a>
+            <div class="d-flex align-items-center just">
+                <div class="searchbar mr-2">
+                    <input class="search_input" type="text" name="Zoeken" placeholder="Zoek">
+                    <a href="#"
+                       class="search_icon d-flex justify-content-center align-items-center rounded-circle"><i class="fas fa-search"></i></a>
+                </div>
+                <a href="winkelmand.html" class="mr-4"><i class="fas fa-shopping-bag"></i></a>
+                <a href="login.html"><i class="far fa-user"></i></a>
+
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg d-flex align-items-center justify-content-center">
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mr-5">
+                <li class="nav-item active">
+                    <a class="nav-link text-uppercase" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="contact.html">contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<div class="container-fluid px-0">
+    <main>
+        <section id="winkelwagen" class="col-lg-10 offset-lg-1">
+            <div class="col-12 text-center my-6">
+                <h2>Winkelwagen</h2>
+            </div>
+            <article class="row align-items-center">
+                <div class="card shopping-cart w-100">
+                    <div class="card-header zwart text-light d-flex align-items-center justify-content-between">
+                        <span><i class="fa fa-shopping-bag mr-2" aria-hidden="true"></i>Winkelmandje</span>
+                        <a href="shop.html" class="btn btn-outline-info btn-sm">Verder winkelen</a>
+                    </div>
+                    <div class="card-body">
+                        <!-- PRODUCT -->
+                        <div class="row">
+                            <div class="col-12 col-md-2 text-center">
+                                <img class="img-fluid" src="images/gloomhaven1.jpg" alt="prewiew gloomhaven" width="120" height="80">
+                            </div>
+                            <div class="col-12 text-sm-center text-md-left col-md-6">
+                                <h4><strong>Gloomhaven</strong></h4>
+                                <h4>
+                                    <small>Product beschrijving</small>
+                                </h4>
+                            </div>
+                            <div class="col-12 text-sm-center col-md-4 text-md-right row align-items-center">
+                                <div class="col-4 col-md-6 text-md-right">
+                                    <h6><strong>€115.00 <span class="text-muted">x</span></strong></h6>
+                                </div>
+                                <div class="col-4">
+                                    <div class="hoeveelheid">
+                                        <input type="number" step="1" max="99" min="1" value="1" title="hoeveelheid" class="hoeveelheid">
+                                    </div>
+                                </div>
+                                <div class="col-2 text-right">
+                                    <button type="button" class="btn btn-outline-danger btn-xs">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- END PRODUCT -->
+                        <div class="row justify-content-end">
+                            <a href="#" class="btn btn-outline-secondary">
+                                Update winkelmand
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="coupon pl-0">
+                            <div class="row">
+                                <div class="col-6 col-lg-3 p-2">
+                                    <input type="text" class="form-control" placeholder="Kortingscode">
+                                </div>
+                                <div class="col-6 col-lg-3 p-2">
+                                    <input type="submit" class="btn btn-default btn-outline-secondary" value="Coupon toepassen">
+                                </div>
+                                <div class="col-6 col-lg-3 mt-md-2 text-right">
+                                        <span class="mr-5">Totaal prijs: <b>€115.00</b></span>
+                                </div>
+                                <div class="col-6 col-lg-3 text-right">
+                                    <a href="checkout.html" class="btn btn-success">Afrekenen</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="bg-light w-100 mx-0 p-2 position-lg-fixed mt-6">
+        <div class="row align-items-center justify-content-around w-100">
+            <article>
+                <p>Copyright &copy; Niels De Witte</p>
+            </article>
+            <article>
+                <nav>
+                    <ul class="d-lg-flex">
+                        <li class="mr-2"><a href="index.html">Home</a></li>
+                        <li class="mr-2"><a href="shop.html">Shop</a></li>
+                        <li class="mr-2"><a href="contact.html">Contacteer ons</a></li>
+                        <li class="mr-2"><a href="" data-toggle="modal" data-target="#nieuwsbriefModal">Nieuwsbrief</a></li>
+                    </ul>
+                </nav>
+            </article>
+            <article>
+                <ul class="socialmedia d-flex flex-wrap align-items-center">
+                    <li><a class="btn-floating btn-lg" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a class="btn-floating btn-lg" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="btn-floating btn-lg" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a class="btn-floating btn-lg" href="mailto:info@bd.be"><i class="fas fa-envelope"></i></a></li>
+                    <li><a class="btn-floating btn-lg" href="#"><i class="fab fa-reddit-alien"></i></a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="modal fade" id="nieuwsbriefModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nieuwsbrief</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <input type="text" name="review" id="reviewTitel" class="form-control" required=""
+                                           placeholder="email">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                        <button type="button" class="btn btn-primary">Aanmelden voor nieuwsbrief</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</div>
+
+</body>
+</html>

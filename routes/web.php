@@ -37,8 +37,11 @@ Route::group(['middleware' => 'admin'], function(){
 Route::get('admin/roles/restore/{role}','AdminRolesController@roleRestore')->name('admin.roleRestore');
 Route::get('admin/users/restore/{user}','AdminUsersController@userRestore')->name('admin.userRestore');
 Route::get('admin/products/restore/{product}','AdminProductsController@productRestore')->name('admin.productRestore');
-
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//FRONT-END ROUTES
+Route::get('/','FrontendController@index')->name('homepage');
+Route::get('/contact','FrontendController@contact')->name('contactPage');
+Route::get('/shop','FrontendController@shop')->name('shopPage');
+Route::get('/shop/quickview/{id}','Frontendcontroller@quickview')->name('quickView');
+Route::get('/product/{slug}','FrontendController@product')->name('productDetailPage');

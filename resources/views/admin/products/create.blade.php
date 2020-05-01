@@ -34,7 +34,7 @@
                             <label class="ownlabel">Categories</label>
                         </div>
                         <div class="form-group position-relative mb-3">
-                            <input type="number" step="0.05" class="owninput" name="price"><span class="highlight"></span><span class="bar"></span>
+                            <input type="number" step="0.01" class="owninput" name="price"><span class="highlight"></span><span class="bar"></span>
                             <label class="ownlabel">Price</label>
                         </div>
 
