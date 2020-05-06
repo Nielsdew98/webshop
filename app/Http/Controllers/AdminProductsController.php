@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Award;
 use App\Category;
+use App\Http\Requests\ProductsRequest;
 use App\Photo;
 use App\Product;
 use App\Stock;
@@ -46,7 +47,7 @@ class AdminProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
         //
         $product = new Product();

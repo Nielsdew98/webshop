@@ -1,21 +1,11 @@
 @extends('layouts.front')
 @section('title')
-    Shop
+    Search Results
 @endsection
 @section('content')
-    <div id="dice" class="my-6 p-5 d-flex align-items-center justify-content-center flex-wrap">
-        <div class="dice-box">
-            <span class="one-h d-lg-flex align-items-center justify-content-center">W</span>
-            <span class="two-e d-lg-flex align-items-center justify-content-center">I</span>
-            <span class="three-l d-lg-flex align-items-center justify-content-center">N</span>
-            <span class="four-l d-lg-flex align-items-center justify-content-center">K</span>
-            <span class="five-o d-lg-flex align-items-center justify-content-center">E</span>
-            <span class="six-e d-lg-flex align-items-center justify-content-center">L</span>
-        </div>
-    </div>
     <section id="shop">
         <div class="col-12 col-lg-10 offset-lg-1">
-            <div class="row">
+            <div class="row my-6">
                 <div class="col-lg-2 col-12">
                     <button type="button" class="btn btn-primary btn-lg btn-block mb-4 d-md-none" id="filterbutton">filter resultaten</button>
                     <div id="mySidenav" class="sidenav">
@@ -188,42 +178,6 @@
                 </div>
                 <div class="col-lg-10 col-12">
                     <div class="row">
-                        <div class="col-lg-6 col-12 mb-4">
-                            <form method="post" action="{{route('productsPerPage')}}">
-                                @csrf
-                                @method('POST')
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Toon artikelen:</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="qtyproducts">
-                                        <option selected>Choose...</option>
-                                        <option value="12">12</option>
-                                        <option value="24">24</option>
-                                        <option value="36">36</option>
-                                        <option value="doorlopend">doorlopend</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
-                            </form>
-
-                        </div>
-                        <div class="col-lg-6 col-12 mb-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect02">Sorteer volgens:</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect02">
-                                    <option selected>Choose...</option>
-                                    <option value="az">A-Z</option>
-                                    <option value="za">Z-A</option>
-                                    <option value="prijsoplopend">Prijs oplopend</option>
-                                    <option value="prijsaflopend">Prijs aflopend</option>
-                                    <option value="leeftijdoplopend">Leeftijd oplopend</option>
-                                    <option value="leeftijdaflopend">Leeftijd aflopend</option>
-                                </select>
-                            </div>
-                        </div>
                         @if($products)
                             @foreach($products as $product)
                                 <div class="col-md-3 col-sm-6 d-flex align-items-stretch">

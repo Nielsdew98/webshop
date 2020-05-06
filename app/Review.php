@@ -10,7 +10,7 @@ class Review extends Model
     //
     use SoftDeletes;
     protected $fillable = [
-      'user_id','product_id','rating','title','body'
+      'user_id','product_id','rating','title','body','is_active'
     ];
 
     public function user(){

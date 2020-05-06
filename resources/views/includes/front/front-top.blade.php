@@ -5,12 +5,18 @@
             <p id="brand" class="text-uppercase">Boardgamers Delight</p>
         </a>
         <div class="d-flex align-items-center just">
-            <div class="searchbar mr-2">
-                <input class="search_input" type="text" name="Zoeken" placeholder="Zoek">
-                <a href="#"
-                   class="search_icon d-flex justify-content-center align-items-center rounded-circle"><i class="fas fa-search"></i></a>
-            </div>
-            <a href="winkelmand.html" class="mr-4"><i class="fas fa-shopping-bag"></i></a>
+            <form method="POST" action="{{route('searchProduct')}}">
+                @csrf
+                @method('POST')
+                 <div class="searchbar mr-2">
+                    <input class="search_input" type="text" name="zoeken" placeholder="Zoek">
+                    <button type="submit"
+                       class="search_icon bg-transparent border-0 d-flex justify-content-center align-items-center rounded-circle"><i class="fas
+                       fa-search"></i></button>
+                </div>
+            </form>
+
+            <a href="{{route('shoppingCart')}}" class="mr-4"><i class="fas fa-shopping-bag"></i></a>
             <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
         </div>
     </div>

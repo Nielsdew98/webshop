@@ -3,28 +3,6 @@
     BoardGamers Delight
 @endsection
 @section('content')
-{{--    <nav class="navbar home navbar-expand-lg d-flex align-items center">
-        <a class="navbar-brand d-flex align-items-center p-0 ml-5" href="index.html">
-            <p id="brand" class="text-uppercase">Boardgamers Delight</p>
-        </a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mr-5">
-                <li class="nav-item active">
-                    <a class="nav-link text-uppercase" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="shop.html">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="contact.html">contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>--}}
     <div class="container-fluid text-center px-0">
     <section id="banner" class="position-relative">
         <section id="bannertekst" class="absolutemiddle text-center">
@@ -368,8 +346,8 @@
             </div>
             <div class="absolutemiddle">
                 <span id="instagramtekst">
-                    @BDBE on instagram<br>
-                    <a href="#">Bekijk foto's</a>
+                    @boardgamersdbe on instagram<br>
+                    <a href="{{url('https://www.instagram.com/boardgamersdbe/')}}">Bekijk foto's</a>
                 </span>
             </div>
         </section>

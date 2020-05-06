@@ -17,7 +17,7 @@ class AdminReviewsController extends Controller
     public function index()
     {
         //
-        $reviews = Review::paginate(15);
+        $reviews = Review::withTrashed()->paginate(15);
         return view('admin.reviews.index',compact('reviews'));
     }
 

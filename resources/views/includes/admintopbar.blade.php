@@ -19,7 +19,6 @@
     <ul class="list-unstyled topnav-menu mb-0">
 
         <li class="d-none d-sm-block">
-            <form class="app-search">
                 <div class="app-search-box">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -30,7 +29,6 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </li>
 
         <li class="dropdown notification-list">

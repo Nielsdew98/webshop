@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Award;
+use App\Http\Requests\AwardsRequest;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class AdminAwardsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AwardsRequest $request)
     {
         //
         $input = $request->all();
@@ -78,10 +79,12 @@ class AdminAwardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AwardsRequest $request, $id)
     {
         //
-
+        $award = Award::findOrFail($id);
+        $award->update($request->all());
+        return redirect('admin/awards');
     }
 
     /**

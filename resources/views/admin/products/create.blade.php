@@ -3,6 +3,7 @@
     Product toevoegen
 @endsection
 @section('content')
+    @include('includes.form_error')
     <form class="w-100" method="POST" enctype="multipart/form-data" action="{{action('AdminProductsController@store')}}">
         <div class="row w-100">
             <div class="col-lg-6">

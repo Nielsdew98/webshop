@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="col-lg-10 offset-lg-1 mb-5">
+        @include('includes.form_error')
         <form class="w-100" method="POST" action="{{action('AdminAwardsController@update',$award->id)}}">
             @csrf {{--Geeft een hidden token mee zodat injecties niet kunnen gebeuren--}}
             @method('PATCH')

@@ -49,7 +49,8 @@
                                 @else
                                     {!! Form::open(['method'=>'DELETE', 'action'=>['AdminProductsController@destroy', $product->id]])!!}
                                     <div class="form-group">
-                                        {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-xs waves-effect waves-light','type'=>'submit'] ) !!}
+                                        {!! For7m::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-xs waves-effect
+                                        waves-light','type'=>'submit'] ) !!}
                                     </div>
                                     {!! Form::close() !!}
                                  @endif
@@ -95,9 +96,6 @@
                     </div> <!-- end col-->
                 @endforeach
             @endif
-
-
-
         </div>
     </div>
 @endsection

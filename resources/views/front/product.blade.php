@@ -39,7 +39,7 @@
                 <p>{{$product ->short_description}}<br><br>
                     <span><a href="#accordion" data-toggle="collapse" data-target="#collapseOne" class="text-uppercase text-primary">Lees
                                 meer</a></span></p>
-                <span class="prijs my-4">{{$product->price}}</span>
+                <span class="prijs my-4">€{{$product->price}}</span>
                 @if($product->stock->stock > 0)
                     <span class="text-success"> Product is leverbaar <i class="fas fa-smile"></i></span>
                     <div class="row align-items-center my-5">
@@ -105,10 +105,15 @@
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <h4>My awesome review</h4>
-                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
-                                <small class="review-date">March 26, 2017</small>
+                                @foreach($product->reviews as $review)
+                                    <h4>{{$review->title}}</h4>
+                                    @for($i=0;$i < $review->rating;$i++)
+                                        <i class="fas fa-star"></i>
+                                    @endfor
+                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                    <p class="review-text">{{$review->body}} </p>
+                                    <small class="review-date">{{$review->created_at}}</small>
+                                @endforeach
                             </div>
                             @if(\Illuminate\Support\Facades\Auth::check())
                             <button class="btn btn-primary" data-toggle="modal" data-target="#reviewModal" data-item-id="{{$product->id}}">Schrijf

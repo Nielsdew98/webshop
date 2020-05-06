@@ -38997,6 +38997,10 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
+function filter(id) {
+  action('Controller@filter') + '/' + id;
+}
+
 /***/ }),
 
 /***/ "./resources/assets/front_assets/js/slider.js":

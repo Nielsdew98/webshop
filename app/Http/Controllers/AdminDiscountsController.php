@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RoleRequest;
-use App\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class AdminRolesController extends Controller
+class AdminDiscountsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,6 @@ class AdminRolesController extends Controller
     public function index()
     {
         //
-        $roles = Role::withTrashed()->paginate(15);
-        return view('admin.roles.index',compact('roles'));
     }
 
     /**
@@ -29,7 +24,6 @@ class AdminRolesController extends Controller
     public function create()
     {
         //
-        return view('admin.roles.create');
     }
 
     /**
@@ -38,12 +32,9 @@ class AdminRolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoleRequest $request)
+    public function store(Request $request)
     {
         //
-        Role::create($request->all());
-        Session::flash('created_role','The role is created');
-        return redirect('admin/roles');
     }
 
     /**
@@ -63,10 +54,9 @@ class AdminRolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
         //
-        return view('admin.roles.edit',compact('role'));
     }
 
     /**
@@ -76,12 +66,9 @@ class AdminRolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request, Role $role)
+    public function update(Request $request, $id)
     {
         //
-        $role->update($request->all());
-        Session::flash('updated_role','The role is updated');
-        return redirect('admin/roles');
     }
 
     /**
@@ -90,16 +77,8 @@ class AdminRolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
         //
-        $role->delete();
-        Session::flash('deleted_role','The role is deleted');
-        return redirect('admin/roles');
-    }
-    public function roleRestore($id){
-        Role::onlyTrashed()->where('id',$id)->restore();
-        Session::flash('restored_role','The role is restored');
-        return redirect('admin/roles');
     }
 }

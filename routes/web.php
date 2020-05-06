@@ -42,6 +42,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 //FRONT-END ROUTES
 Route::get('/','FrontendController@index')->name('homepage');
 Route::get('/contact','FrontendController@contact')->name('contactPage');
+//search
+Route::post('/search','FrontendController@search')->name('searchProduct');
+//shop
 Route::get('/shop','FrontendController@shop')->name('shopPage');
+Route::post('/shop','FrontendController@productsPerPage')->name('productsPerPage');
 Route::get('/shop/quickview/{id}','Frontendcontroller@quickview')->name('quickView');
+
+//product
 Route::get('/product/{slug}','FrontendController@product')->name('productDetailPage');
+
+//cart
+Route::get('/products/addToCart/{id}','Frontendcontroller@addToCart')->name('addToCart');
+Route::get('/cart','FrontendController@cart')->name('shoppingCart');
+Route::post('/cart','Frontendcontroller@updateQuantity')->name('quantity');
+Route::get('/removeitem/{id}','Frontendcontroller@removeItem')->name('removeItem');
