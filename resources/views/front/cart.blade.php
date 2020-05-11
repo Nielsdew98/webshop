@@ -9,7 +9,7 @@
         </div>
         <article class="row align-items-center">
             <div class="card shopping-cart w-100">
-                <div class="card-header zwart text-light d-flex align-items-center justify-content-between">
+                <div class="card-header bg-dark text-light d-flex align-items-center justify-content-between">
                     <span><i class="fa fa-shopping-bag mr-2" aria-hidden="true"></i>Winkelmandje</span>
                     <a href="{{route('shopPage')}}" class="btn btn-outline-info btn-sm">Verder winkelen</a>
                 </div>

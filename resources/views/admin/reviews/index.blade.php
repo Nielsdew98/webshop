@@ -8,7 +8,8 @@
         <tr>
             <th scope="row">Id</th>
             <th scope="row">product</th>
-            <th scope="row">author</th>
+            <th scope="row">Title</th>
+            <th scope="row">body</th>
             <th scope="row">Created at</th>
             <th scope="row">Updated at</th>
         </tr>
@@ -18,7 +19,8 @@
             <tr>
                 <td>{{$review->id}}</td>
                 <td>{{$review->product->title}}</td>
-                <td>{{$review->user->name}}</td>
+                <td>{{$review->title}}</td>
+                <td>{{$review->body}}</td>
                 <td>{{$review->created_at->diffForHumans()}}</td>
                 <td>{{$review->updated_at->diffForHumans()}}</td>
                 <td>

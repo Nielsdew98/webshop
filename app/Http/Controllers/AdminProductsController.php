@@ -24,7 +24,7 @@ class AdminProductsController extends Controller
     public function index()
     {
         //
-        $products = Product::with('default_image')->withTrashed()->paginate(8);
+        $products = Product::with('default_image','reviews')->withTrashed()->paginate(8);
         return view('admin.products.index',compact('products'));
     }
 
@@ -169,6 +169,7 @@ class AdminProductsController extends Controller
     }
     public function productRestore($id){
       Product::withTrashed()->where('id',$id)->restore();
-        return redirect('admin/products');
+
+      return redirect('admin/products');
     }
 }

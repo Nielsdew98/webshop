@@ -14,7 +14,6 @@ class FrontendController extends Controller
     //pages
     public function index(){
         $newproducts = Product::latest()->take(5)->get();
-        $instagram = self::
         return view('index',compact('newproducts'));
     }
     public function contact(){
@@ -91,7 +90,9 @@ class FrontendController extends Controller
 
     //productpage
     public function product($slug){
-        $product = Product::with(['photos','stock','reviews'])->where('slug',$slug)->first();
+        $product = Product::with(['photos','stock','reviews'=>function($q){
+            $q->where('reviews.is_active', 1);
+        }])->where('slug',$slug)->first();
         return view('front.product',compact('product'));
     }
 }

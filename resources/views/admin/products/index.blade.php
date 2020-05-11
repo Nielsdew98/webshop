@@ -49,7 +49,7 @@
                                 @else
                                     {!! Form::open(['method'=>'DELETE', 'action'=>['AdminProductsController@destroy', $product->id]])!!}
                                     <div class="form-group">
-                                        {!! For7m::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-xs waves-effect
+                                        {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-xs waves-effect
                                         waves-light','type'=>'submit'] ) !!}
                                     </div>
                                     {!! Form::close() !!}
@@ -68,11 +68,9 @@
                                                 {{$product->title}}</a>
                                         </h5>
                                         <div class="text-warning mb-2 font-13">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            @for($i=0;$i<\App\Review::where('product_id',$product->id)->avg('rating');$i++)
+                                             <i class="fa fa-star"></i>
+                                            @endfor
                                         </div>
                                         <h5 class="m-0"> <span class="text-muted"> Stocks : {{$product->stock ? $product->stock->stock : 0}}pcs</span></h5>
                                     </div>

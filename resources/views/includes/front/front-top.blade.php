@@ -16,7 +16,13 @@
                 </div>
             </form>
 
-            <a href="{{route('shoppingCart')}}" class="mr-4"><i class="fas fa-shopping-bag"></i></a>
+            <a href="{{route('shoppingCart')}}" class="mr-4">
+                 <span class="fa-stack"
+                       data-count="{{Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}">
+                      <i class="fas fa-circle"></i>
+                    <i class="fas fa-shopping-bag primary-cart"></i>
+                 </span>
+            </a>
             <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
         </div>
     </div>

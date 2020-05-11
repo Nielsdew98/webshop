@@ -6,6 +6,7 @@ $zwart: #1d1e22;
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 //General
+
 .absolutemiddle{
   top: 50%;
   left: 50%;
@@ -498,4 +499,26 @@ h3{
  .rate > input:checked ~ label:hover ~ label,
  .rate > label:hover ~ input:checked ~ label {
      color: $oranje;
+ }
+ .fa-stack[data-count]:after{
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     content: attr(data-count);
+     font-size: 20%;
+     padding: .6em;
+     border-radius: 999px;
+     line-height: .75em;
+     color: white;
+     text-align: center;
+     min-width: 2em;
+     font-weight: bold;
+     background: $zwart;
+     border-style: solid;
+ }
+ .fa-circle{
+     color: $oranje;
+ }
+ .primary-cart{
+     color: $oranje; background: #343a40;
  }

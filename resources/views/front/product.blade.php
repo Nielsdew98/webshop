@@ -43,18 +43,20 @@
                 @if($product->stock->stock > 0)
                     <span class="text-success"> Product is leverbaar <i class="fas fa-smile"></i></span>
                     <div class="row align-items-center my-5">
-                        <div class="col-6">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Aantal</span>
+                            <form class="w-100 row align-items-center my-5" action="{{route('addToCart',$product->id)}}">
+                                <div class="col-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Aantal</span>
+                                        </div>
+                                        <input type="number" class="form-control"  aria-label="Username" name="hoevelheid" min="1" max="10"
+                                               aria-describedby="basic-addon1">
+                                    </div>
                                 </div>
-                                <input type="number" class="form-control"  aria-label="Username" name="hoevelheid" min="1" max="10"
-                                       aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <button class="btnhover" onclick="window.location.href='winkelmand.html';">Aan winkelmand toevoegen</button>
-                        </div>
+                                <div class="col-6">
+                                    <input type="submit" class="btnhover" value="Aan winkelmand toevoegen">
+                                </div>
+                            </form>
                     </div>
                 @else
                     <span class="text-danger"> Product niet meer leverbaar <i class="fas fa-sad-cry"></i></span>
@@ -107,18 +109,19 @@
                             <div class="card-body">
                                 @foreach($product->reviews as $review)
                                     <h4>{{$review->title}}</h4>
+                                <div class="text-warning">
                                     @for($i=0;$i < $review->rating;$i++)
                                         <i class="fas fa-star"></i>
                                     @endfor
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                </div>
+
                                     <p class="review-text">{{$review->body}} </p>
                                     <small class="review-date">{{$review->created_at}}</small>
                                 @endforeach
                             </div>
                             @if(\Illuminate\Support\Facades\Auth::check())
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#reviewModal" data-item-id="{{$product->id}}">Schrijf
-                                een
-                                review</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#reviewModal" data-item-id="{{$product->id}}">
+                                Schrijf een review</button>
                             @endif
 
                         </div>

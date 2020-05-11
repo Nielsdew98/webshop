@@ -6608,6 +6608,32 @@ h3 {
   color: #FB8122;
 }
 
+.fa-stack[data-count]:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  content: attr(data-count);
+  font-size: 20%;
+  padding: 0.6em;
+  border-radius: 999px;
+  line-height: 0.75em;
+  color: white;
+  text-align: center;
+  min-width: 2em;
+  font-weight: bold;
+  background: #1d1e22;
+  border-style: solid;
+}
+
+.fa-circle {
+  color: #FB8122;
+}
+
+.primary-cart {
+  color: #FB8122;
+  background: #343a40;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
