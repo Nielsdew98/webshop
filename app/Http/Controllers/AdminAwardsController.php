@@ -39,7 +39,7 @@ class AdminAwardsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AwardsRequest $request)
+    public function store(Request $request)
     {
         //
         $input = $request->all();
@@ -96,5 +96,7 @@ class AdminAwardsController extends Controller
     public function destroy($id)
     {
         //
+        Award::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

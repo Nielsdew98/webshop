@@ -37,7 +37,7 @@
                                             @method('POST')
                                             <div class="form-group row">
                                                 <input type="number" step="1" max="99" min="1" value="{{$item['quantity']}}" name="quantity"
-                                                       title="hoeveelheid"  class="hoeveelheid">
+                                                       title="hoeveelheid" class="hoeveelheid">
                                                 <input class="form-control form-control-sm" type="hidden" name="id"
                                                        value="{{$item['product_id']}}">
                                                 <button type="submit" class="btn btn-outline-secondary">
@@ -72,7 +72,6 @@
                             </div>
                             <div class="col-6 col-lg-3 text-right">
                                 <a href="checkout.html" class="btn btn-success">Afrekenen</a>
-
                             </div>
                         </div>
                     </div>

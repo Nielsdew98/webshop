@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Discount;
+use App\Product;
 use Illuminate\Http\Request;
 
 class AdminDiscountsController extends Controller
@@ -14,6 +16,8 @@ class AdminDiscountsController extends Controller
     public function index()
     {
         //
+        $discounts = Discount::paginate(15);
+        return view('admin.discounts.index',compact('discounts'));
     }
 
     /**
@@ -24,6 +28,8 @@ class AdminDiscountsController extends Controller
     public function create()
     {
         //
+        $products = Product::select('title','id')->where('is_active',1)->get();
+        return view('admin.discounts.create',compact('products'));
     }
 
     /**
@@ -35,6 +41,16 @@ class AdminDiscountsController extends Controller
     public function store(Request $request)
     {
         //
+        if ($discount = Discount::where('homepage',1)){
+            $discount->update(['homepage'=>0]);
+        }
+        $input = $request->all();
+        if ($request->homepage){
+            $input['homepage'] = "1";
+        }
+
+        Discount::create($input);
+        return redirect('admin/discounts');
     }
 
     /**
@@ -54,9 +70,11 @@ class AdminDiscountsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id)    {
         //
+        $discount = Discount::findOrFail($id);
+        $products = Product::select('title','id')->get();
+        return view('admin.discounts.edit',compact('products','discount'));
     }
 
     /**
@@ -69,6 +87,18 @@ class AdminDiscountsController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $input = $request->all();
+        if($request->homepage){
+            if ($discount = Discount::where('homepage',1)){
+                $discount->update(['homepage'=>0]);
+            }
+            $input['homepage'] = 1;
+        }else{
+            $input['homepage'] = 0;
+        }
+        $discount = Discount::findOrFail($id);
+        $discount->update($input);
+        return redirect('admin/discounts');
     }
 
     /**
@@ -80,5 +110,7 @@ class AdminDiscountsController extends Controller
     public function destroy($id)
     {
         //
+        Discount::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

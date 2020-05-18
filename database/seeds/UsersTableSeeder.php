@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
             'last_name'=>'De Witte',
             'email'=>'niels984@gmail.com',
             'phone'=>1,
-            'role_id'=>1,
             'password'=>bcrypt(12345678)]);
 
     }

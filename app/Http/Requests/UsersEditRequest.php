@@ -27,7 +27,7 @@ class UsersEditRequest extends FormRequest
             //
             'first_name'=>'required|string',
             'last_name'=>'required|string',
-            'phone'=>'required|number',
+            'phone'=>'required|numeric',
             'email'=>'required|email',
             'is_active'=> 'required',
         ];

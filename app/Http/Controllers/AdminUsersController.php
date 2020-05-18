@@ -43,7 +43,7 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersEditRequest $request)
+    public function store(Request $request)
     {
         //
         $user = new User();

@@ -66,10 +66,10 @@ class AdminMediasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Photo $photo)
+    public function edit($id)
     {
         //
-
+        $photo = Photo::findOrFail($id);
         return view('admin.medias.edit',compact('photo'));
     }
 

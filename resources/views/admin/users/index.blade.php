@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <td>Orders</td>
-                                        <td>15</td>
+                                        <td>{{count($user->orders)}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

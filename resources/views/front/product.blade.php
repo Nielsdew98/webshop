@@ -5,10 +5,10 @@
 @section('content')
     <section id="product" class="col-lg-10 offset-lg-1 my-6 row">
         <div class="col-lg-6">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset($product->default_image->file)}}" alt="" class="w-100">
+                        <img src="{{asset($product->default_image->file)}}" data-slide="{{$product->default_image->id}}" alt="" class="w-100">
                     </div>
                     @if($product->detail_images)
                         @foreach($product->detail_images as $detail)
@@ -24,7 +24,7 @@
                             <div class="col-3">
                                 <img src="{{asset($photo->file)}}" alt="" class="w-100 img-fluid img-thumbnail"
                                      data-target="#carouselExampleIndicators"
-                                     data-slide-to="{{($photo->id)-1}}">
+                                     data-slide-to="{{$photo->id}}">
                             </div>
                         @endforeach
                     @endif
@@ -39,7 +39,13 @@
                 <p>{{$product ->short_description}}<br><br>
                     <span><a href="#accordion" data-toggle="collapse" data-target="#collapseOne" class="text-uppercase text-primary">Lees
                                 meer</a></span></p>
-                <span class="prijs my-4">€{{$product->price}}</span>
+                @if($product->discount != null)
+                    <p><span class="d-inline"><del>€{{$product->price}} </del>
+                        </span><span class="ml-3 prijsd-inline">
+                            €{{$product->price - ($product->price / 100 * $product->discount->percent)}}</span></p>
+                @else
+                    <p class="prijs">€{{$product->price}}</p>
+                @endif
                 @if($product->stock->stock > 0)
                     <span class="text-success"> Product is leverbaar <i class="fas fa-smile"></i></span>
                     <div class="row align-items-center my-5">

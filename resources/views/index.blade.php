@@ -300,35 +300,40 @@
                 </div>
             </div>
         </section>
-        <section id="promoties" class="w-100 mx-0 my-6">
-            <div class="col-lg-10 offset-lg-1">
-                <h2 class="text-center my-6">Promoties</h2>
-                <div class="row bg-white border-primary">
-                    <div class="col-lg-6">
-                        <img src="images/gloomhaven1.jpg" class="img-fluid" alt="...">
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="d-flex flex-column p-3">
-                        <h4>Gloomhaven</h4>
-                        <p><span class="d-inline"><del>€115 </del></span><span class="ml-3 prijs d-inline">€100,00</span></p>
-                        <div>
-                            <ul>
-                                <li class="p-2"><span id="days"></span>days</li>
-                                <li class="p-2"><span id="hours"></span>Hours</li>
-                                <li class="p-2"><span id="minutes"></span>Minutes</li>
-                                <li class="p-2"><span id="seconds"></span>Seconds</li>
-                                <p class="prijs text-center">Profiteer nog snel van deze promotie!</p>
-                            </ul>
+        @if($discount)
+            <section id="promoties" class="w-100 mx-0 my-6">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2 class="text-center my-6">Promoties</h2>
+                    <div class="row bg-white border-primary">
+                        <div class="col-lg-6">
+                            <img src="{{asset($discount->product->default_image->file)}}" class="img-fluid"
+                                 alt="{{$discount->product->title}}">
                         </div>
-                            <div class="row mx-auto">
-                                <a class="btnhover mr-2">Aan winkelmand toevoegen</a>
-                                <a class="btnhover">Ontdek andere promoties</a>
+                        <div class="col-lg-6">
+                            <div class="d-flex flex-column p-3">
+                                <h4>{{$discount->product->title}}</h4>
+                                <p><span class="d-inline"><del>€{{$discount->product->price}} </del></span><span class="ml-3 prijs
+                                d-inline">€{{$discount->product->price - ($discount->product->price / 100 * $discount->percent)}}</span></p>
+                                <div>
+                                    <ul>
+                                        <li class="p-2"><span id="days"></span>days</li>
+                                        <li class="p-2"><span id="hours"></span>Hours</li>
+                                        <li class="p-2"><span id="minutes"></span>Minutes</li>
+                                        <li class="p-2"><span id="seconds"></span>Seconds</li>
+                                        <p class="prijs text-center">Profiteer nog snel van deze promotie!</p>
+                                    </ul>
+                                </div>
+                                <div class="row mx-auto">
+                                    <a class="btnhover mr-2" href="{{route('addToCart',$discount->product->id)}}">Aan winkelmand toevoegen</a>
+                                    <a class="btnhover" href="{{route('discounts')}}">Ontdek andere promoties</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
+
         <section id="instagram" class="w-100 mx-0 mt-6 position-relative">
             <div class="row mx-0">
                 <article class="col-lg-3 p-0">

@@ -32,6 +32,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/reviews','AdminReviewsController');
     Route::resource('admin/awards','AdminAwardsController');
     Route::resource('admin/products','AdminProductsController');
+    Route::resource('admin/discounts','AdminDiscountsController');
 });
 
 Route::get('admin/roles/restore/{role}','AdminRolesController@roleRestore')->name('admin.roleRestore');
@@ -56,4 +57,7 @@ Route::get('/product/{slug}','FrontendController@product')->name('productDetailP
 Route::get('/products/addToCart/{id}','Frontendcontroller@addToCart')->name('addToCart');
 Route::get('/cart','FrontendController@cart')->name('shoppingCart');
 Route::post('/cart','Frontendcontroller@updateQuantity')->name('quantity');
-Route::get('/removeitem/{id}','Frontendcontroller@removeItem')->name('removeItem');
+Route::get('/removeitem/{id}','FrontendController@removeItem')->name('removeItem');
+
+//discounts
+Route::get('/discounts','FrontendController@discounts')->name('discounts');

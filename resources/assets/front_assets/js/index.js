@@ -68,7 +68,7 @@ function typeEffect(element, speed) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
-function filter(id)
-{
-    action('Controller@filter')  + '/' + id;
-}
+
+
+
+

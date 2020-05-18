@@ -50,6 +50,9 @@
                             <a href="{{route('products.index')}}">Products</a>
                         </li>
                         <li>
+                            <a href="{{route('discounts.index')}}">Discounts</a>
+                        </li>
+                        <li>
                             <a href="">Orders</a>
                         </li>
                     </ul>

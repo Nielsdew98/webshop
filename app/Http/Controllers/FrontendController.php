@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Category;
+use App\Discount;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 
 class FrontendController extends Controller
@@ -14,7 +16,8 @@ class FrontendController extends Controller
     //pages
     public function index(){
         $newproducts = Product::latest()->take(5)->get();
-        return view('index',compact('newproducts'));
+        $discount = Discount::with(['product'])->where('homepage',1)->first();
+        return view('index',compact('newproducts','discount'));
     }
     public function contact(){
         return view('front.contact');
@@ -87,6 +90,10 @@ class FrontendController extends Controller
         $categories = Category::select('name','id')->get();
         return view('front.shop',compact('products','categories'));
     }
+    public function showModal($id){
+        $product = Product::find($id);
+        return view('front.quickView',compact('product'));
+    }
 
     //productpage
     public function product($slug){
@@ -95,4 +102,11 @@ class FrontendController extends Controller
         }])->where('slug',$slug)->first();
         return view('front.product',compact('product'));
     }
+
+    //discounts
+    public function discounts(){
+        $discounts = Discount::with('product')->get();
+        return view('front.discounts',compact('discounts'));
+    }
+
 }

@@ -18,7 +18,11 @@ class CreateDiscountsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->decimal('percent');
+            $table->unsignedBigInteger('product_id')->unsigned()->index()->unique();
+            $table->integer('homepage')->nullable()->default(0);
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

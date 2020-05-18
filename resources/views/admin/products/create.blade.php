@@ -84,8 +84,6 @@
                         <div class="form-group" id="awards">
 
                         </div>
-                        <a href="" class="btn w-sm btn-success waves-effect waves-light" id="award" data-toggle="modal" data-target="#awardModal">Voeg award
-                            toe</a>
                     </div>
                 </div>
             </div> <!-- end col-->
@@ -99,5 +97,7 @@
         </div> <!-- end col -->
     </div>
     </form>
+    <script>
 
+    </script>
 @endsection
