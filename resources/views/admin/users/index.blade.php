@@ -24,7 +24,7 @@
                 </span>
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".usersinfo{{$user->id}}">
-                <i class="mdi mdi-chevron-down text-muted"></i>
+                <i class="fas fa-chevron-down text-muted"></i>
             </div>
         </div>
         <div class="row user-infos usersinfo{{$user->id}} mx-auto my-2">

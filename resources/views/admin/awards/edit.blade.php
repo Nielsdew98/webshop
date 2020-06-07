@@ -14,12 +14,7 @@
                     <div class="form-group position-relative mb-3">
                         <input type="text" class="owninput" name="name" value="{{$award->name}}"><span class="highlight"></span><span
                             class="bar"></span>
-                        <label class="ownlabel">Award Name</label>
-                    </div>
-                    <div class="form-group position-relative mb-3">
-                        <input type="text" class="owninput" name="year" value="{{$award->year}}"><span class="highlight"></span><span
-                            class="bar"></span>
-                        <label class="ownlabel">Awardyear</label>
+                        <label class="ownlabel">Award Name (+year)</label>
                     </div>
                     <div class="form-group position-relative mb-3">
                         <select class="owninput" name="product_id">

@@ -27,7 +27,7 @@
                         <td>{{$category-> name}}</td>
                         <td>
                             <a href="{{route('categories.edit',$category->id)}}" class="btn btn-sm btn-warning mb-2 text-white" type="button"
-                               data-original-title="Edit this user"><i class="fa fa-edit"></i></a>
+                               data-original-title="Edit this user"><i class="fas fa-edit"></i></a>
                             {!! Form::open(['method'=>'DELETE', 'action'=>['AdminCategoriesController@destroy', $category->id] ]) !!}
                             <div class="form-group">
                                 {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-sm btn-danger','type'=>'submit'] ) !!}

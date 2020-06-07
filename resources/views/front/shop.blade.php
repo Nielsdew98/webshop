@@ -110,7 +110,7 @@
                                 <div class="card-body">
                                     @foreach($categories as $category)
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked"
+                                            <input type="checkbox" class="custom-control-input"
                                                    name="{{$category->name}}" value="{{$category->id}}">
                                             <label class="custom-control-label" for="defaultUnchecked">{{$category->name}}</label>
                                         </div>
@@ -238,11 +238,11 @@
                                             <li><a href="" data-toggle="modal"
                                                    data-target="#quickViewProduct{{$product->id}}"
                                                    title="Snel bekijken"
-                                                   class="quickView text-center border rounded mx-2 position-relative d-block"><i
+                                                   class="quickView d-flex align-items-center justify-content-center border rounded mx-2 position-relative d-block"><i
                                                         class="fa fa-search"></i></a>
                                             </li>
                                             <li><a href="{{route('addToCart',$product->id)}}" data-toggle="tooltip" data-placement="bottom" title="Toevoegen aan winkelmand"
-                                                   class="text-center border rounded mx-2 position-relative d-block">
+                                                   class="text-center border rounded mx-2 position-relative d-block d-flex align-items-center justify-content-center">
                                                     <i class="fa fa-shopping-bag"></i></a></li>
                                         </ul>
                                     </article>
@@ -287,7 +287,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
                         @endif
                     </div>
@@ -296,3 +295,4 @@
         </div>
     </section>
 @endsection
+

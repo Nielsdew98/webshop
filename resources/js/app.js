@@ -4,7 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('../../resources/assets/admin_assets/vendor/jquery/jquery.min.js');
+require('../../resources/assets/admin_assets/vendor/jquery-easing/jquery.easing.min.js');
+require('../../resources/assets/admin_assets/vendor/bootstrap/js/bootstrap.min.js');
+require('../../resources/assets/admin_assets/js/style.js');
+require('../../resources/assets/admin_assets/js/sb-admin-2.min.js');
+
 
 window.Vue = require('vue');
 
@@ -28,5 +33,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#shop',
+    el: '#app',
 });

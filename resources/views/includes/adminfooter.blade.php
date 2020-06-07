@@ -1,18 +1,9 @@
-<!-- Footer Start -->
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                &copy; Syntra West
-            </div>
-            <div class="col-md-6">
-                <div class="text-md-right footer-links d-none d-sm-block">
-                    <a href="javascript:void(0);">About Us</a>
-                    <a href="javascript:void(0);">Help</a>
-                    <a href="javascript:void(0);">Contact Us</a>
-                </div>
-            </div>
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
         </div>
     </div>
 </footer>
-<!-- end Footer -->
+<!-- End of Footer -->

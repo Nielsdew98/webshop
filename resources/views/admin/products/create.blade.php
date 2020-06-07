@@ -21,7 +21,8 @@
                             <label class="ownlabel">Short Description</label>
                         </div>
                         <div class="form-group position-relative mb-3">
-                            <textarea rows="10" cols="30" class="owninput" name="description"></textarea><span class="highlight"></span><span
+                            <textarea rows="10" cols="30" class="owninput summernote" name="description"></textarea><span
+                                class="highlight"></span><span
                                 class="bar"></span>
                             <label class="ownlabel">Description</label>
                         </div>
@@ -82,7 +83,22 @@
                     <h5 class="text-uppercase mt-0 mb-3 bg-light p-2">Award</h5>
                     <div class="p-2">
                         <div class="form-group" id="awards">
-
+                            <div class="form-group position-relative mb-3">
+                                <input type="text" class="owninput" name="awardname" id="awardname"><span class="highlight"></span><span
+                                    class="bar"></span>
+                                <label class="ownlabel">Award Name</label>
+                            </div>
+                            <a class="btn w-sm btn-success waves-effect waves-light"
+                            id="addaward"><i class="fas fa-plus-circle">Add Award</i></a>
+                            <div class="form-group position-relative mb-3">
+                                <select class="owninput" id="awardsselect" name="awards[]" multiple>
+                                    @if(Session::has('awards'))
+                                        @dd(\Illuminate\Support\Facades\Session::get('awards'))
+                                    @endif
+                                </select>
+                                <span class="highlight"></span><span class="bar"></span>
+                                <label class="ownlabel">Awards</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,7 +113,5 @@
         </div> <!-- end col -->
     </div>
     </form>
-    <script>
-
-    </script>
 @endsection
+

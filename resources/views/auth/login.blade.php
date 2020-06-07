@@ -47,6 +47,7 @@
             </div>
             <div class="col-lg-6">
                 <h2>Nog geen account? Registreer nu</h2>
+                @include('includes.form_error')
                 <form method="POST" action="{{route('register')}}">
                     @csrf
                     @method('POST')
@@ -79,7 +80,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="ww">Wachtwoord *</label>
-                            <input type="text" class="form-control @error('password_register') is-invalid @enderror"  value="{{ old('password_register')}}" id="ww" name="register_password"
+                            <input type="password" class="form-control @error('password_register') is-invalid @enderror"  value="{{ old
+                            ('password_register')}}" id="ww" name="register_password"
                                    required>
                             @error('password_register')
                             <span class="invalid-feedback" role="alert">
@@ -89,7 +91,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ww2">Wachtwoord herhalen *</label>
-                            <input type="text" class="form-control" id="ww2" name="password2" required>
+                            <input type="password" class="form-control" id="ww2" name="password2" required>
                         </div>
                     </div>
                     <button class="btnhover">registreer nu</button>

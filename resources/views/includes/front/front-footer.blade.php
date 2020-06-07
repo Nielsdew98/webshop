@@ -6,9 +6,9 @@
         <article>
             <nav>
                 <ul class="d-lg-flex">
-                    <li class="mr-2"><a href="index.html">Home</a></li>
-                    <li class="mr-2"><a href="shop.html">Shop</a></li>
-                    <li class="mr-2"><a href="contact.html">Contacteer ons</a></li>
+                    <li class="mr-2"><a href="{{route('homepage')}}">Home</a></li>
+                    <li class="mr-2"><a href="{{route('shopPage')}}">Shop</a></li>
+                    <li class="mr-2"><a href="{{route('contactPage')}}">Contacteer ons</a></li>
                     <li class="mr-2"><a href="" data-toggle="modal" data-target="#nieuwsbriefModal">Nieuwsbrief</a></li>
                 </ul>
             </nav>
@@ -32,20 +32,22 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <input type="text" name="review" id="reviewTitel" class="form-control" required=""
-                                       placeholder="email">
+                <form method="POST" action="">
+                    @csrf
+                    @method('POST')
+                     <div class="modal-body">
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <input type="text" name="review" id="reviewTitel" class="form-control" required=""
+                                           placeholder="email">
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
-                    <button type="button" class="btn btn-primary">Aanmelden voor nieuwsbrief</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                        <button type="submit" class="btn btn-primary">Aanmelden voor nieuwsbrief</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

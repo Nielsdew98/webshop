@@ -1,92 +1,149 @@
-<!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu">
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <div class="slimscroll-menu">
-
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-
-            <ul class="metismenu" id="side-menu">
-                <li class="menu-title">Componenten</li>
-                <li>
-                    <a>
-                        <i class="fab fa-connectdevelop"></i>
-                        <span> Componenten </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level collapse" aria-expanded="false">
-                        <li>
-                            <a href="{{route('users.index')}}">Users</a>
-                        </li>
-                        <li>
-                            <a href="{{route('categories.index')}}">Categories</a>
-                        </li>
-                        <li>
-                            <a href="{{route('roles.index')}}">Roles</a>
-                        </li>
-                        <li>
-                            <a href="{{route('medias.index')}}">Medias</a>
-                        </li>
-                        <li>
-                            <a href="{{route('reviews.index')}}">Review</a>
-                        </li>
-                        <li>
-                            <a href="{{route('awards.index')}}">Awards</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-title">Navigation</li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-shopping-cart"></i>
-                        <span> eCommerce </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level collapse" aria-expanded="false">
-                        <li>
-                            <a href="{{route('home')}}">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="{{route('products.index')}}">Products</a>
-                        </li>
-                        <li>
-                            <a href="{{route('discounts.index')}}">Discounts</a>
-                        </li>
-                        <li>
-                            <a href="">Orders</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="fe-mail"></i>
-                        <span> Email </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="">Inbox</a>
-                        </li>
-                        <li>
-                            <a href="">Read Email</a>
-                        </li>
-                        <li>
-                            <a href="">Compose Email</a>
-                        </li>
-                        <li>
-                            <a href="">Email Templates</a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-chess-board"></i>
         </div>
-        <!-- End Sidebar -->
+        <div class="sidebar-brand-text mx-3">Boardgamers Delight</div>
+    </a>
 
-        <div class="clearfix"></div>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('home')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        USERS
     </div>
-    <!-- Sidebar -left -->
 
-</div>
-<!-- Left Sidebar End -->
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Users -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('users.index')}}">
+            <i class="fas fa-users"></i>
+            <span>All Users</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('users.create')}}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add User</span></a>
+    </li>
+    <div class="sidebar-heading">
+        CATEGORIES
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('categories.index')}}">
+            <i class="fas fa-tags"></i>
+            <span>All categories</span></a>
+    </li>
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('categories.create')}}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add category</span></a>
+    </li>
+    <div class="sidebar-heading">
+        DISCOUNTS
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('discounts.index')}}">
+            <i class="fas fa-percentage"></i>
+            <span>All discounts</span></a>
+    </li>
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('discounts.create')}}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add discount</span></a>
+    </li>
+    <div class="sidebar-heading">
+        PRODUCTS
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('products.index')}}">
+            <i class="fas fa-box-open"></i>
+            <span>All products</span></a>
+    </li>
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('products.create')}}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add product</span></a>
+    </li>
+    <div class="sidebar-heading">
+        All Awards
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('awards.index')}}">
+            <i class="fas fa-award"></i>
+            <span>All awards</span></a>
+    </li>
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('awards.create')}}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add award</span></a>
+    </li>
+    <div class="sidebar-heading">
+        Reviews
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('reviews.index')}}">
+            <i class="fas fa-comment"></i>
+            <span>All Reviews</span></a>
+    </li>
+    <!-- Divider -->
+    <div class="sidebar-heading">
+        ORDERS
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('reviews.index')}}">
+            <i class="fas fa-shopping-basket"></i>
+            <span>All orders</span></a>
+    </li>
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+
+</ul>
+<!-- End of Sidebar -->

@@ -16,7 +16,6 @@ class CreateAwardsTable extends Migration
         Schema::create('awards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('year');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();

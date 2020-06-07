@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'register_password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+
     }
 
     /**
@@ -66,8 +67,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if ($data['password'] != $data['password2']){
-            return 'Wachtwoorden komen niet overeen';
+
+
+        if ($data['register_password'] != $data['password2']){
+
         }else{
             return User::create([
                 'is_active' => 0,

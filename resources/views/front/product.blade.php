@@ -41,7 +41,7 @@
                                 meer</a></span></p>
                 @if($product->discount != null)
                     <p><span class="d-inline"><del>€{{$product->price}} </del>
-                        </span><span class="ml-3 prijsd-inline">
+                        </span><span class="ml-3 prijs d-inline">
                             €{{$product->price - ($product->price / 100 * $product->discount->percent)}}</span></p>
                 @else
                     <p class="prijs">€{{$product->price}}</p>

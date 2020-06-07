@@ -26,8 +26,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-lg-right mt-3 mt-lg-0">
-                        <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="mdi mdi-settings"></i></button>
-                        <a href="{{route('products.create')}}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle
+                        <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="fas fa-filter"></i></button>
+                        <a href="{{route('products.create')}}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-plus-circle
                         mr-1"></i> Product toevoegen</a>
                     </div>
                 </div><!-- end col-->
@@ -42,7 +42,7 @@
                         <div class="card p-2 product-box ">
                             <div class="product-action row">
                                 <a href="{{route('products.edit',$product->id)}}" class="btn btn-success btn-xs waves-effect waves-light w-sm h-25
-                                mr-2"><i class="mdi mdi-pencil"></i></a>
+                                mr-2"><i class="fas fa-edit"></i></a>
                                 @if($product->deleted_at != null)
                                     <a href="{{route('admin.productRestore',$product->id)}}" class="btn btn-danger btn-xs waves-effect waves-light">
                                         <i class="fas fa-trash-restore"></i></a>

@@ -73,10 +73,11 @@ class AdminProductsController extends Controller
                 Photo::create(['file'=>$name,'product_id'=>$product->id]);
             }
         }
-        if($request->awardname && $request->awardyear){
-                Award::create(['name'=>$request->awardname,'year'=> $request->awardyear,'product_id'=>$product->id]);
+        if($request->awards){
+            foreach ($request->awards as $award) {
+                Award::create(['name' => $award,'product_id'=>$product->id]);
+            }
         }
-
         $product->categories()->sync($request->categories, false);
         return redirect('/admin/products');
     }

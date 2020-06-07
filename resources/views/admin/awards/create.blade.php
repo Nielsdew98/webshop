@@ -13,11 +13,7 @@
                 <div class="p-2">
                     <div class="form-group position-relative mb-3">
                         <input type="text" class="owninput" name="name"><span class="highlight"></span><span class="bar"></span>
-                        <label class="ownlabel">Award Name</label>
-                    </div>
-                    <div class="form-group position-relative mb-3">
-                        <input type="text" class="owninput" name="year"><span class="highlight"></span><span class="bar"></span>
-                        <label class="ownlabel">Awardyear</label>
+                        <label class="ownlabel">Award Name (+year)</label>
                     </div>
                     <div class="form-group position-relative mb-3">
                         <select class="owninput" name="product_id">

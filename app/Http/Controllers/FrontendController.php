@@ -9,15 +9,19 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Unirest;
 
 
 class FrontendController extends Controller
 {
     //pages
     public function index(){
+        Unirest\Request::verifyPeer(false);
+        $instagram = new \InstagramScraper\Instagram();
+        $nonPrivateAccountMedias = $instagram->getMedias('boardgamersdbe',4);
         $newproducts = Product::latest()->take(5)->get();
         $discount = Discount::with(['product'])->where('homepage',1)->first();
-        return view('index',compact('newproducts','discount'));
+        return view('index',compact('newproducts','discount','nonPrivateAccountMedias'));
     }
     public function contact(){
         return view('front.contact');

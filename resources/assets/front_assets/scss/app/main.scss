@@ -500,9 +500,10 @@ h3{
  .rate > label:hover ~ input:checked ~ label {
      color: $oranje;
  }
+
  .fa-stack[data-count]:after{
      position: absolute;
-     right: 0;
+     right: 50% !important;
      bottom: 0;
      content: attr(data-count);
      font-size: 20%;
@@ -520,5 +521,5 @@ h3{
      color: $oranje;
  }
  .primary-cart{
-     color: $oranje; background: #343a40;
+     color: $oranje;
  }

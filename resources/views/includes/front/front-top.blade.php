@@ -5,7 +5,7 @@
             <p id="brand" class="text-uppercase">Boardgamers Delight</p>
         </a>
         <div class="d-flex align-items-center just">
-            <form method="POST" action="{{route('searchProduct')}}">
+            <form method="POST" action="{{route('searchProduct')}}" class="mb-0">
                 @csrf
                 @method('POST')
                  <div class="searchbar mr-2">
@@ -16,14 +16,18 @@
                 </div>
             </form>
 
-            <a href="{{route('shoppingCart')}}" class="mr-4">
-                 <span class="fa-stack"
+            <a href="{{route('shoppingCart')}}">
+                 <span class="fa-stack custom_width"
                        data-count="{{Session::has('cart') ? Session::get('cart')->totalQuantity : '0' }}">
-                      <i class="fas fa-circle"></i>
                     <i class="fas fa-shopping-bag primary-cart"></i>
                  </span>
             </a>
-            <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <a href="{{ route('login') }}"><i class="far fa-user"></i> Welcome {{Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
+            @else
+                <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+            @endif
+
         </div>
     </div>
 </nav>

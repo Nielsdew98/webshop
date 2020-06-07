@@ -336,18 +336,16 @@
 
         <section id="instagram" class="w-100 mx-0 mt-6 position-relative">
             <div class="row mx-0">
-                <article class="col-lg-3 p-0">
-                    <img class="img-fluid" src="https://placekitten.com/400/400" alt="">
-                </article>
-                <article class="col-lg-3 p-0">
-                    <img class="img-fluid" src="https://placekitten.com/400/400" alt="">
-                </article>
-                <article class="col-lg-3 p-0">
-                    <img class="img-fluid" src="https://placekitten.com/400/400" alt="">
-                </article>
-                <article class="col-lg-3 p-0">
-                    <img class="img-fluid" src="https://placekitten.com/400/400" alt="">
-                </article>
+                @if($nonPrivateAccountMedias)
+                    @foreach($nonPrivateAccountMedias as $media)
+                        <article class="col-lg-3 p-0">
+                            <a href="{{$media->getLink()}}">
+                                <img class="img-fluid" src="{{$media->getImageHighResolutionUrl()}}" alt="">
+                            </a>
+
+                        </article>
+                    @endforeach
+                @endif
             </div>
             <div class="absolutemiddle">
                 <span id="instagramtekst">
