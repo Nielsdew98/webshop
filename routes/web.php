@@ -49,6 +49,8 @@ Route::post('/search','FrontendController@search')->name('searchProduct');
 Route::get('/shop','FrontendController@shop')->name('shopPage');
 Route::post('/shop','FrontendController@productsPerPage')->name('productsPerPage');
 Route::get('/shop/quickview/{id}','Frontendcontroller@quickview')->name('quickView');
+Route::get('/shop/category/{id}','Frontendcontroller@productsPerCategory')->name('productsPerCategory');
+
 
 //product
 Route::get('/product/{slug}','FrontendController@product')->name('productDetailPage');
@@ -61,3 +63,6 @@ Route::get('/removeitem/{id}','FrontendController@removeItem')->name('removeItem
 
 //discounts
 Route::get('/discounts','FrontendController@discounts')->name('discounts');
+
+//checkout
+Route::get('/checkout','FrontendController@checkout')->name('checkout');

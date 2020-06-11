@@ -29,16 +29,23 @@
                                         </button>
                                     </h5>
                                 </div>
-
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
+                                        <form>
                                         @foreach($categories as $category)
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked"
+                                            {{--<div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
                                                        name="{{$category->name}}" value="{{$category->id}}">
-                                                <label class="custom-control-label" for="defaultUnchecked">{{$category->name}}</label>
+                                                <label class="custom-control-label">{{$category->name}}</label>
+                                            </div>--}}
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="category{{$category->id}}"
+                                                       name="{{$category->name}}"
+                                                       value="{{$category->id}}">
+                                                <label class="form-check-label" for="{{$category->id}}">{{$category->name}}</label>
                                             </div>
                                         @endforeach
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -108,13 +115,17 @@
 
                             <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordion2">
                                 <div class="card-body">
-                                    @foreach($categories as $category)
+                                        @foreach($categories as $category)
+                                        <a href="{{route('productsPerCategory',$category->id)}}">{{$category->name}}</a>
+                                        @endforeach
+                                    </form>
+                                    {{--@foreach($categories as $category)
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input"
                                                    name="{{$category->name}}" value="{{$category->id}}">
                                             <label class="custom-control-label" for="defaultUnchecked">{{$category->name}}</label>
                                         </div>
-                                    @endforeach
+                                    @endforeach--}}
                                 </div>
                             </div>
                         </div>

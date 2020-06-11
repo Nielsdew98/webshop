@@ -5,8 +5,36 @@
 @section('content')
     <section id="product" class="col-lg-10 offset-lg-1 my-6 row">
         <div class="col-lg-6">
-         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
+         <div id="productSlider" class="carousel slide" data-ride="carousel">
+             @if($product->photos)
+                 <ol class="carousel-indicators">
+                 @for($i=0;$i<count($product->photos);$i++)
+                    @if ($i == 0)
+                     <li data-target="#productSlider" data-slide-to="{{$i}}" class="active"></li>
+                     @else
+                     <li data-target="#productSlider" data-slide-to="{{$i}}"></li>
+                    @endif
+                @endfor
+                 </ol>
+             @endif
+            <div class="carousel-inner">
+                @if($product->photos)
+                    @for($i=0;$i<count($product->photos);$i++)
+                        @if ($i == 0)
+                            <div class="carousel-item active">
+                                <img src="{{asset($product->photos[$i]->file)}}" data-slide="{{$product->photos[$i]->id}}" alt=""
+                                     class="w-100">
+                            </div>
+                        @else
+                            <div class="carousel-item">
+                                <img src="{{asset($product->photos[$i]->file)}}" data-slide="{{$product->photos[$i]->id}}" alt=""
+                                     class="w-100">
+                            </div>
+                        @endif
+                    @endfor
+                @endif
+              </div>
+                {{--<div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{asset($product->default_image->file)}}" data-slide="{{$product->default_image->id}}" alt="" class="w-100">
                     </div>
@@ -24,11 +52,11 @@
                             <div class="col-3">
                                 <img src="{{asset($photo->file)}}" alt="" class="w-100 img-fluid img-thumbnail"
                                      data-target="#carouselExampleIndicators"
-                                     data-slide-to="{{$photo->id}}">
+                                     data-slide-to="{{($photo->id) -1}}">
                             </div>
                         @endforeach
                     @endif
-                </div>
+                </div>--}}
             </div>
         </div>
         <div class="col-lg-6">

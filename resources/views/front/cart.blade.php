@@ -71,7 +71,7 @@
                                 <span class="mr-5">Totaal prijs: <b>€{{Session::get('cart')->totalprice}}</b></span>
                             </div>
                             <div class="col-6 col-lg-3 text-right">
-                                <a href="checkout.html" class="btn btn-success">Afrekenen</a>
+                                <a href="{{route('checkout')}}" class="btn btn-success">Afrekenen</a>
                             </div>
                         </div>
                     </div>

@@ -12,13 +12,15 @@
                 <form id="contactformulier" class="bg-transparent p-6">
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <input type="text" class="form-control" id="Naam" required="" placeholder="Naam">
+                            <input type="text" class="form-control" id="Naam" required="" placeholder="Naam" value="{{Auth::user() ? Auth::user()->first_name : ''}}">
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="email" class="form-control" id="Email" required="" placeholder="Email">
+                            <input type="email" class="form-control" id="Email" required="" placeholder="Email" value="{{Auth::user() ? Auth::user()
+                         ->email : ''}}">
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="tel" class="form-control" id="Telefoon" required="" placeholder="Telefoon">
+                            <input type="tel" class="form-control" id="Telefoon" required="" placeholder="Telefoon" value="{{Auth::user() ? Auth::user()
+                            ->phone : ''}}">
                         </div>
                     </div>
                     <div class="form-row">

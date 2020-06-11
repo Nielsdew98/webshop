@@ -6633,6 +6633,64 @@ h3 {
   color: #FB8122;
 }
 
+#productSlider {
+  /*------------------------------- vertical carousel indicators ------------------------------*/
+}
+
+#productSlider .carousel-inner > .carousel-item.carousel-item-next,
+#productSlider .carousel-inner > .carousel-item.active.carousel-item-right {
+  transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  top: 0;
+}
+
+#productSlider .carousel-inner > .carousel-item.carousel-item-prev,
+#productSlider .carousel-inner > .carousel-item.active.carousel-item-left {
+  transform: translate3d(0, -100%, 0);
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+  top: 0;
+}
+
+#productSlider .carousel-inner > .carousel-item.next.carousel-item-left,
+#productSlider .carousel-inner > .carousel-item.carousel-item-prev.carousel-item-right,
+#productSlider .carousel-inner > .carousel-item.active {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  top: 0;
+}
+
+#productSlider .carousel-indicators {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 20px;
+  right: 10px;
+  left: auto;
+  width: auto;
+  transform: rotate(90deg);
+}
+
+#productSlider .carousel-indicators li {
+  display: block;
+  margin-bottom: 5px;
+  border: 1px solid #00a199;
+}
+
+#productSlider .carousel-indicators li.active {
+  margin-bottom: 5px;
+  background: #00a199;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

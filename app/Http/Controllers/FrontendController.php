@@ -6,7 +6,9 @@ use App\Cart;
 use App\Category;
 use App\Discount;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use Unirest;
@@ -94,11 +96,6 @@ class FrontendController extends Controller
         $categories = Category::select('name','id')->get();
         return view('front.shop',compact('products','categories'));
     }
-    public function showModal($id){
-        $product = Product::find($id);
-        return view('front.quickView',compact('product'));
-    }
-
     //productpage
     public function product($slug){
         $product = Product::with(['photos','stock','reviews'=>function($q){
@@ -111,6 +108,16 @@ class FrontendController extends Controller
     public function discounts(){
         $discounts = Discount::with('product')->get();
         return view('front.discounts',compact('discounts'));
+    }
+
+    public function checkout(){
+        if (Auth::check()){
+            $user = User::findOrFail(Auth::id());
+            return view('front.checkout',compact('user'));
+        }else{
+            return view('front.checkout');
+        }
+
     }
 
 }
