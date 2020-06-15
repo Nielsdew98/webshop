@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Category;
 use App\Discount;
+use App\Order;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class FrontendController extends Controller
     //search
     public function search(Request $request){
         if ($request->zoeken == null){
-
+                return back();
         }else{
             $products = Product::where('title','like','%'.$request->zoeken.'%')->get();
             $categories = Category::select('name','id')->get();
@@ -77,9 +78,6 @@ class FrontendController extends Controller
 
         return redirect('/cart');
     }
-    public function login(){
-
-    }
     //shoppage
     public function shop(){
         $products = Product::paginate(8)->where('is_active',1);
@@ -113,11 +111,19 @@ class FrontendController extends Controller
     public function checkout(){
         if (Auth::check()){
             $user = User::findOrFail(Auth::id());
-            return view('front.checkout',compact('user'));
+            $currentcart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($currentcart);
+            $cart = $cart->products;
+            return view('front.checkout',compact('user','cart'));
         }else{
-            return view('front.checkout');
+            $currentcart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($currentcart);
+            $cart = $cart->products;
+            return view('front.checkout',compact('cart'));
         }
 
     }
+    public function createOrder(Request $request){
 
+    }
 }

@@ -51695,9 +51695,7 @@ document.getElementById("filterbutton").addEventListener("click", function () {
 });
 document.getElementById("closebtn").addEventListener("click", function () {
   document.getElementById("mySidenav").style.width = "0";
-});
-var DOMhours = document.getElementById("hours");
-if (DOMhours) DOMhours.innerHTML = todaysHours; //effects
+}); //effects
 
 function typeEffect(element, speed) {
   var text = element.innerHTML;

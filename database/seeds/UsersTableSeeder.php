@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'first_name'=>'Niels',
             'last_name'=>'De Witte',
             'email'=>'niels984@gmail.com',
+            'email_verified_at'=> now(),
             'phone'=>1,
             'password'=>bcrypt(12345678)]);
 

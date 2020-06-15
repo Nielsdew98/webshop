@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin', function(){
@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/awards','AdminAwardsController');
     Route::resource('admin/products','AdminProductsController');
     Route::resource('admin/discounts','AdminDiscountsController');
+    Route::resource('admin/orders','AdminOrderController');
 });
 
 Route::get('admin/roles/restore/{role}','AdminRolesController@roleRestore')->name('admin.roleRestore');
@@ -66,3 +67,6 @@ Route::get('/discounts','FrontendController@discounts')->name('discounts');
 
 //checkout
 Route::get('/checkout','FrontendController@checkout')->name('checkout');
+Route::post('/checkout/order','OrderController@createOrder')->name('createOrder');
+Route::get('/checkout/order/pay/{id}','PaymentController@preparepayment')->name('payment.mollie');
+Route::get('/checkout/order/payment-succes','PaymentController@paymentSuccess')->name('payment.success');

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PhpParser\Node\Expr\Array_;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
+
 
 class AdminProductsController extends Controller
 {

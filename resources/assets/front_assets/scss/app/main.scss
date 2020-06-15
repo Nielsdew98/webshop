@@ -565,3 +565,8 @@ h3{
 
     }
 }
+.input[readonly].classname{
+    background-color:transparent;
+    border: 0;
+    font-size: 1em;
+}

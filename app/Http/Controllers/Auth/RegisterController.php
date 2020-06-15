@@ -49,15 +49,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         $validator= Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'numeric'],
-            'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'register_password' => ['required', 'string', 'min:8', 'confirmed'],
+            'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'register_password' => ['required', 'string', 'min:8', 'same:password_confirmation'],
         ]);
-
+        $validator->setAttributeNames([ //om de foutmelding met de originele naam te tonen
+            'register_name' => 'name',
+            'register_email' => 'email',
+            'register_password' => 'password',
+        ]);
+        return $validator;
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -67,19 +74,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        return  User::create([
+            'is_active' => 0,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'phone' => $data['phone'],
+            'email' => $data['register_email'],
+            'password' => Hash::make($data['register_password']),
+        ]);
 
-
-        if ($data['register_password'] != $data['password2']){
-
-        }else{
-            return User::create([
-                'is_active' => 0,
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'phone' => $data['phone'],
-                'email' => $data['register_email'],
-                'password' => Hash::make($data['register_password']),
-            ]);
-        }
     }
 }

@@ -6691,6 +6691,12 @@ h3 {
   background: #00a199;
 }
 
+.input[readonly].classname {
+  background-color: transparent;
+  border: 0;
+  font-size: 1em;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

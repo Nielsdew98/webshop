@@ -68,79 +68,30 @@
                         <thead>
                         <tr>
                             <th class="border-top-0">Name</th>
-                            <th class="border-top-0">Card</th>
+                            <th class="border-top-0">Status</th>
                             <th class="border-top-0">Date</th>
                             <th class="border-top-0">Amount</th>
-                            <th class="border-top-0">Status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <img src="assets/images/users/user-2.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                <span class="ml-2">Imelda J. Stanberry</span>
-                            </td>
-                            <td>
-                                <img src="assets/images/cards/visa.png" alt="user-card" height="24" />
-                                <span class="ml-2">**** 3256</span>
-                            </td>
-                            <td>27.03.2018</td>
-                            <td>$345.98</td>
-                            <td><span class="badge badge-pill badge-danger">Failed</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="assets/images/users/user-3.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                <span class="ml-2">Francisca S. Lobb</span>
-                            </td>
-                            <td>
-                                <img src="assets/images/cards/master.png" alt="user-card" height="24" />
-                                <span class="ml-2">**** 8451</span>
-                            </td>
-                            <td>28.03.2018</td>
-                            <td>$1,250</td>
-                            <td><span class="badge badge-pill badge-success">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="assets/images/users/user-1.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                <span class="ml-2">James A. Wert</span>
-                            </td>
-                            <td>
-                                <img src="assets/images/cards/amazon.png" alt="user-card" height="24" />
-                                <span class="ml-2">**** 2258</span>
-                            </td>
-                            <td>28.03.2018</td>
-                            <td>$145</td>
-                            <td><span class="badge badge-pill badge-success">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="assets/images/users/user-4.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                <span class="ml-2">Dolores J. Pooley</span>
-                            </td>
-                            <td>
-                                <img src="assets/images/cards/american-express.png" alt="user-card" height="24" />
-                                <span class="ml-2">**** 6950</span>
-                            </td>
-                            <td>29.03.2018</td>
-                            <td>$2,005.89</td>
-                            <td><span class="badge badge-pill badge-danger">Failed</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="assets/images/users/user-5.jpg" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
-                                <span class="ml-2">Karen I. McCluskey</span>
-                            </td>
-                            <td>
-                                <img src="assets/images/cards/discover.png" alt="user-card" height="24" />
-                                <span class="ml-2">**** 0021</span>
-                            </td>
-                            <td>31.03.2018</td>
-                            <td>$24.95</td>
-                            <td><span class="badge badge-pill badge-success">Paid</span></td>
-                        </tr>
-
+                        @if($orders)
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td>
+                                        <span class="ml-2">{{$order->user->first_name . ' ' .  $order->user->last_name}}</span>
+                                    </td>
+                                    <td>
+                                         <span class="ml-2">
+                                             @if($order->payment_status == "in behandeling")
+                                                <p class="badge badge-pill badge-warning mx-1">{{$order->payment_status}}</p>
+                                              @endif
+                                         </span>
+                                    </td>
+                                    <td>{{$order->created_at}}</td>
+                                    <td>€{{$order->total_price}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div> <!-- end table-responsive -->

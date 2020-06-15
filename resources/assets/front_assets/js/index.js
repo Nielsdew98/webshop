@@ -45,9 +45,6 @@ document.getElementById("closebtn").addEventListener("click", function(){
     document.getElementById("mySidenav").style.width = "0";
 });
 
-var DOMhours = document.getElementById("hours");
-if (DOMhours) DOMhours.innerHTML = todaysHours;
-
 //effects
 function typeEffect(element, speed) {
 
@@ -68,6 +65,8 @@ function typeEffect(element, speed) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+
 
 
 

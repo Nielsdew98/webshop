@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     /**
@@ -27,7 +28,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->take(5)->get();
-        return view('admin.index',compact('products'));
+        if(Auth::check()){
+            if(Auth::user()->isAdmin()){
+                $products = Product::latest()->take(5)->get();
+                $orders = Order::latest()->take(5)->get();
+                return view('admin.index',compact('products','orders'));
+            }
+        }
+        return redirect('/');
     }
 }
