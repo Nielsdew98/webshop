@@ -22,7 +22,8 @@
                             <label class="ownlabel">Short Description</label>
                         </div>
                         <div class="form-group position-relative mb-3">
-                            <textarea rows="10" cols="30" class="owninput" name="description" >{{$product->description}}</textarea><span
+                            <textarea rows="10" cols="30" class="owninput" id="product_description" name="description"
+                            >{{$product->description}}</textarea><span
                                 class="highlight"></span><span
                                 class="bar"></span>
                             <label class="ownlabel">Description</label>

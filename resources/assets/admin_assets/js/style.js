@@ -44,4 +44,15 @@ $(document).ready(function() {
         i++;
         Session["awards"]= awards;
     });
+    $('#product_description').summernote({
+            height: 300,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['undo','redo']],
+            ],
+        });
 });

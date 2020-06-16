@@ -34,29 +34,6 @@
                     @endfor
                 @endif
               </div>
-                {{--<div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{asset($product->default_image->file)}}" data-slide="{{$product->default_image->id}}" alt="" class="w-100">
-                    </div>
-                    @if($product->detail_images)
-                        @foreach($product->detail_images as $detail)
-                            <div class="carousel-item">
-                                <img src="{{asset($detail->file)}}" data-slide="{{$detail->id}}" alt="" class="w-100">
-                            </div>
-                         @endforeach
-                    @endif
-                </div>
-                <div class="row my-4">
-                    @if($product->photos)
-                        @foreach($product->photos as $photo)
-                            <div class="col-3">
-                                <img src="{{asset($photo->file)}}" alt="" class="w-100 img-fluid img-thumbnail"
-                                     data-target="#carouselExampleIndicators"
-                                     data-slide-to="{{($photo->id) -1}}">
-                            </div>
-                        @endforeach
-                    @endif
-                </div>--}}
             </div>
         </div>
         <div class="col-lg-6">
@@ -107,7 +84,7 @@
                         </div>
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                   {{$product->description}}
+                                   {!!$product->description!!}
                             </div>
                         </div>
                     </div>

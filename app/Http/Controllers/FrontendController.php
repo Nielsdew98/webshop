@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Category;
 use App\Discount;
+use App\Filters\ProductQueryFilter;
 use App\Order;
 use App\Product;
 use App\User;
@@ -85,8 +86,10 @@ class FrontendController extends Controller
         return view('front.shop',compact('products','categories'));
     }
     public function productsPerCategory($id){
-        $categories = Category::all();
-        $products =  Product::with('categories')->where('category_id',$id);
+        $categories = Category::select('name','id')->get();
+        $products = Product::with('categories')->whereHas('categories', function($q) use ($id){
+            $q->where('category_id', '=',$id);
+        })->where('is_active', '=', '1')->paginate(8);
         return view('front.shop',compact('categories','products'));
     }
     public function productsPerPage(Request $request){
@@ -121,9 +124,6 @@ class FrontendController extends Controller
             $cart = $cart->products;
             return view('front.checkout',compact('cart'));
         }
-
-    }
-    public function createOrder(Request $request){
 
     }
 }

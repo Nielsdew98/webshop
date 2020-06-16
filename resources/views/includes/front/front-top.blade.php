@@ -27,7 +27,11 @@
                     <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far
                     fa-user"></i> Welcome {{Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">View profile</a>
+                        @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
+                            <a class="dropdown-item" href="{{route('home')}}">View Admin dashboard</a>
+                        @else
+                            <a class="dropdown-item" href="{{route('profilePage')}}">View profile</a>
+                        @endif
                         <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                     </div>
                 </div>

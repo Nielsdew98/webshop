@@ -52,6 +52,8 @@ Route::post('/shop','FrontendController@productsPerPage')->name('productsPerPage
 Route::get('/shop/quickview/{id}','Frontendcontroller@quickview')->name('quickView');
 Route::get('/shop/category/{id}','Frontendcontroller@productsPerCategory')->name('productsPerCategory');
 
+//user
+Route::get('/user/{id}','FrontendController@userpage')->name('profilePage');
 
 //product
 Route::get('/product/{slug}','FrontendController@product')->name('productDetailPage');
@@ -69,4 +71,4 @@ Route::get('/discounts','FrontendController@discounts')->name('discounts');
 Route::get('/checkout','FrontendController@checkout')->name('checkout');
 Route::post('/checkout/order','OrderController@createOrder')->name('createOrder');
 Route::get('/checkout/order/pay/{id}','PaymentController@preparepayment')->name('payment.mollie');
-Route::get('/checkout/order/payment-succes','PaymentController@paymentSuccess')->name('payment.success');
+Route::get('/checkout/order/payment-succes/{id}','PaymentController@paymentSuccess')->name('payment.success');

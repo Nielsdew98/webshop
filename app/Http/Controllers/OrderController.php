@@ -15,7 +15,9 @@ class OrderController extends Controller
         $order->delivery_method = $request->levermethode;
         $order->payment_status = 'in behandeling';
         $order->save();
+        $order->products()->sync($request->products, false);
 
        return redirect()->route('payment.mollie', ['id' => $order->id]);
     }
+
 }

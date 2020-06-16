@@ -21,10 +21,11 @@
                             <label class="ownlabel">Short Description</label>
                         </div>
                         <div class="form-group position-relative mb-3">
-                            <textarea rows="10" cols="30" class="owninput" id="description" name="description">
+                            <label class="">Description</label>
+                            <textarea rows="10" cols="30" class="owninput" id="product_description" name="description">
                             </textarea>
                             <span class="highlight"></span><span class="bar"></span>
-                            <label class="ownlabel">Description</label>
+
                         </div>
                         <div class="form-group position-relative mb-3">
                             <select class="owninput" name="categories[]" multiple>

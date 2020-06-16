@@ -32,7 +32,7 @@
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
                                         <form>
-                                        @foreach($categories as $category)
+                                            @foreach($categories as $category)
                                             {{--<div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
                                                        name="{{$category->name}}" value="{{$category->id}}">
@@ -116,7 +116,7 @@
                             <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordion2">
                                 <div class="card-body">
                                         @foreach($categories as $category)
-                                        <a href="{{route('productsPerCategory',$category->id)}}">{{$category->name}}</a>
+                                         <a href="{{route('productsPerCategory',$category->id)}}">{{$category->name}}</a>
                                         @endforeach
                                     </form>
                                     {{--@foreach($categories as $category)

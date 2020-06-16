@@ -38,8 +38,9 @@ class PaymentController extends Controller
      * you can fetch, check and process the payment.
      * (See the webhook docs for more information.)
      */
-    public function paymentSuccess() {
-        
+    public function paymentSuccess(Order $order) {
+        $order->payment_status = 'paid';
+        $order->save();
         $cart = Session::get('cart');
         foreach ($cart as $item){
             $i = 0;
