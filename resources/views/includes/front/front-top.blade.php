@@ -29,10 +29,14 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
                             <a class="dropdown-item" href="{{route('home')}}">View Admin dashboard</a>
+                            <a class="dropdown-item" href="{{route('account')}}">View Account page</a>
                         @else
-                            <a class="dropdown-item" href="{{route('profilePage')}}">View profile</a>
+                            <a class="dropdown-item" href="{{route('account')}}">View profile</a>
                         @endif
-                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                            <form id="logout-form" class="text-center" action="{{ url('logout') }}" method="POST">
+                                @csrf
+                                <button class="border-0" type="submit">Logout</button>
+                            </form>
                     </div>
                 </div>
             @else

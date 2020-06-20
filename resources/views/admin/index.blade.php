@@ -69,6 +69,7 @@
                         <tr>
                             <th class="border-top-0">Name</th>
                             <th class="border-top-0">Status</th>
+                            <th class="border-top-0">User/Guest</th>
                             <th class="border-top-0">Date</th>
                             <th class="border-top-0">Amount</th>
                         </tr>
@@ -78,14 +79,24 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <td>
-                                        <span class="ml-2">{{$order->user->first_name . ' ' .  $order->user->last_name}}</span>
+                                        <span class="ml-2">{{$order->user ? $order->user->first_name . ' ' .  $order->user->last_name :
+                                        $order->guest->first_name . ' ' .  $order->guest->last_name}}</span>
                                     </td>
                                     <td>
                                          <span class="ml-2">
                                              @if($order->payment_status == "in behandeling")
                                                 <p class="badge badge-pill badge-warning mx-1">{{$order->payment_status}}</p>
+                                             @elseif($order->payment_status == "paid")
+                                                 <p class="badge badge-pill badge-success mx-1">{{$order->payment_status}}</p>
                                               @endif
                                          </span>
+                                    </td>
+                                    <td>
+                                        @if($order->user)
+                                            <strong>User</strong>
+                                        @else($order->guest)
+                                            <strong>Guest</strong>
+                                        @endif
                                     </td>
                                     <td>{{$order->created_at}}</td>
                                     <td>€{{$order->total_price}}</td>

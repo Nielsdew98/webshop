@@ -1,5 +1,6 @@
 
 require('./bootstrap');
+require("../../resources/assets/front_assets/js/multistep.js");
 require("../../node_modules/scrollreveal/dist/scrollreveal.min.js");
 require("../../resources/assets/front_assets/js/index.js");
 require("../../resources/assets/front_assets/js/slider.js");
@@ -25,5 +26,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-});
+new Vue({
+})

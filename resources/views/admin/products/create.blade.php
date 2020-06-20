@@ -74,7 +74,7 @@
                     <h5 class="text-uppercase mt-0 mb-3 bg-light p-2">Stock</h5>
                     <div class="p-2">
                         <div class="form-group position-relative mb-3">
-                            <input type="text" class="owninput" name="stock"><span class="highlight"></span><span class="bar"></span>
+                            <input type="number" step="1" class="owninput" name="stock"><span class="highlight"></span><span class="bar"></span>
                             <label class="ownlabel">Stock</label>
                         </div>
                     </div>
@@ -93,9 +93,6 @@
                             id="addaward"><i class="fas fa-plus-circle">Add Award</i></a>
                             <div class="form-group position-relative mb-3">
                                 <select class="owninput" id="awardsselect" name="awards[]" multiple>
-                                    @if(Session::has('awards'))
-                                        @dd(\Illuminate\Support\Facades\Session::get('awards'))
-                                    @endif
                                 </select>
                                 <span class="highlight"></span><span class="bar"></span>
                                 <label class="ownlabel">Awards</label>

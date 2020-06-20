@@ -21,7 +21,7 @@ class PaymentController extends Controller
                 "value" => $order->total_price, // You must send the correct number of decimals, thus we enforce the use of strings
             ],
             "description" => "Order " .$order->id,
-            "redirectUrl" => route('payment.success'),
+            "redirectUrl" => route('payment.success',['id' => $order->id]),
             "metadata" => [
                 "order_id" => $order->id,
             ],
@@ -38,17 +38,33 @@ class PaymentController extends Controller
      * you can fetch, check and process the payment.
      * (See the webhook docs for more information.)
      */
-    public function paymentSuccess(Order $order) {
+    public function paymentSuccess($id) {
+        $order = Order::findOrFail($id);
         $order->payment_status = 'paid';
         $order->save();
         $cart = Session::get('cart');
+      /*  foreach (){
+            $newstock = $product->stock->decrement('stock',$quantity);
+            dd($newstock);
+            $product->stock->update($newstock);
+        };*/
         foreach ($cart as $item){
             $i = 0;
             $item = Session::forget('cart', $i);
             $i++;
-        }
-        return view('front.paymentsucces');
+        };
+        dd($order);
 
+
+        return view('front.paymentsucces',compact('order'));
+
+    }
+    public function paymentFailed($id) {
+        $order = Order::findOrFail($id);
+        $order->payment_status = 'failed';
+        $order->save();
+
+        return view('front.paymentfailed',compact('order'));
     }
 }
 

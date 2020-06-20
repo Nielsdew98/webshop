@@ -1,4 +1,4 @@
-<footer class="bg-light w-100 mx-0 p-2 position-lg-fixed mt-6">
+<footer class="bg-light w-100 mx-0 p-2 mt-6">
     <div class="row align-items-center justify-content-around w-100">
         <article>
             <p>Copyright &copy; Niels De Witte</p>
@@ -32,20 +32,20 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="">
+                <form method="POST" action="{{route('newsletter')}}">
                     @csrf
                     @method('POST')
                      <div class="modal-body">
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <input type="text" name="review" id="reviewTitel" class="form-control" required=""
+                                    <input type="text" name="email" id="reviewTitel" class="form-control" required=""
                                            placeholder="email">
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
-                        <button type="submit" class="btn btn-primary">Aanmelden voor nieuwsbrief</button>
+                        <input type="submit" class="btn btn-primary" name="aanmelden">
                     </div>
                 </form>
             </div>

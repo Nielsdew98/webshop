@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="col-lg-10 offset-lg-1" id="checkout">
-        <section>
+       {{-- <section>
             <div id="app">
                 <div class="row">
                     <div class="col-12 text-center my-6">
@@ -98,18 +98,19 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
-                                <form action="" method="POST">
-                                    @method('POST')
+                                <form id="checkoutUserInfo">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="Vnaam">Voornaam *</label>
-                                            <input type="text" v-model="txtInput" class="form-control" id="Vnaam" required=""
+                                            <input type="text"  class="form-control" id="vnaam" required="" name="Vnaam"
                                                    value="{{Auth::user() ? Auth::user()->first_name : ''}}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="Naam">Naam *</label>
-                                            <input type="text" class="form-control" id="Naam" required="" value="{{Auth::user() ? Auth::user()->last_name
+                                            <input type="text" class="form-control" id="naam" name="naam" required="" value="{{Auth::user() ?
+                                            Auth::user()
+                                            ->last_name
                                             : ''}}">
                                         </div>
                                     </div>
@@ -127,16 +128,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Adres">Straat en huisnummer *</label>
-                                        <input type="text" class="form-control" id="Adres" required="" value="">
+                                        <input type="text" class="form-control" id="adres" required="" value="">
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <label for="Postcode">Postcode *</label>
-                                            <input type="text" class="form-control" id="Postcode" required="">
+                                            <input type="text" class="form-control" id="postcode" required="">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="Gemeente">Gemeente *</label>
-                                            <input type="text" class="form-control" id="Gemeente" required="">
+                                            <input type="text" class="form-control" id="gemeente" required="">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="Land">Land *</label>
@@ -152,7 +153,7 @@
                                             <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
                                         </div>
                                     </div>
-                                    <input type="submit" value="doorgaan" class="btnhover">
+                                    <input type="submit" value="doorgaan" name="continueAdres" class="btnhover">
                                 </form>
                             </div>
                         </div>
@@ -169,22 +170,22 @@
                             <div class="card-body">
                                 <div class="input-group">
                                     <form class="my-3">
+                                        @csrf
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" value="postpunt" v-model="levermethode" id="Post"
-                                                   name="groupOfDefaultRadios">
+                                            <input type="radio" class="custom-control-input" value="postpunt" name="postpunt"
+                                            id="Post">
                                             <label class="custom-control-label" for="Post">Levering bij postpunt (+€3,00)</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" value="huis" v-model="levermethode" id="huis"
-                                                   name="groupOfDefaultRadios"
-                                                   checked>
+                                            <input type="radio" class="custom-control-input" value="huis" name="huis"  id="huis">
                                             <label class="custom-control-label" for="huis">Levering aan huis (+€4,00)</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" value="afhalen" v-model="levermethode" id="afhalen"
-                                                   name="groupOfDefaultRadios" checked>
+                                            <input type="radio" class="custom-control-input" value="afhalen" name="afhalen"
+                                            id="afhalen">
                                             <label class="custom-control-label" for="afhalen">Afhalen</label>
                                         </div>
+                                        <input type="submit" value="doorgaan" name="delivery" class="btnhover">
                                     </form>
                                 </div>
                             </div>
@@ -211,11 +212,12 @@
                                         @endforeach
                                     </select>
                                     <h4><strong>Prijs</strong></h4>
-                                    <input type="text" class="form-control classname" name="prijs" value="{{Session::get('cart')->totalprice}}"
+                                    <input type="text" class="form-control classname" name="prijs" value="{{Session::get('cart')->totalprice}} +
+                                    "
                                            readonly />
                                     <h4><strong>Factuurnaam</strong></h4>
-                                    <input type="text" class="form-control classname" name="factuurnaam"
-                                           value="{{Auth::id()}}" placeholder="{{Auth::user() ? Auth::user()->first_name : ''}}" readonly />
+                                    <input type="text" class="form-control classname" name="factuurnaam" id="ordername"
+                                           value="{{Auth::id()}}" placeholder="" readonly />
                                     <h4><strong>Leveradres</strong></h4>
                                     <input type="text" class="form-control classname" name="leveradres" value="test"
                                            readonly />
@@ -226,147 +228,188 @@
                             </div>
                         </div>
                     </div>
-                    {{--<div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
-                                    5. Betaling
-                                </button>
-                            </h2>
+                </div>
+            </div>
+        </section>--}}
+        <div class="row">
+            <div class="col-12 text-center my-6">
+                <h1>Afrekenen</h1>
+            </div>
+        </div>
+        <div class="multisteps-form">
+            <!--progress bar-->
+            <div class="row">
+                <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+                    <div class="multisteps-form__progress">
+                        <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">Personal Info</button>
+                        <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
+                        <button class="multisteps-form__progress-btn" type="button" title="Order Info">Shipping method</button>
+                        <button class="multisteps-form__progress-btn" type="button" title="Order Info">Order Info</button>
+                        <button class="multisteps-form__progress-btn" type="button" title="Comments">Comments</button>
+                    </div>
+                </div>
+            </div>
+            <!--form panels-->
+            <div class="row">
+                <div class="col-12 col-lg-8 m-auto">
+                    <form class="multisteps-form__form" method="POST" action="{{route('createOrder')}}">
+                        @method('POST')
+                            @csrf
+                        <!--single form panel-->
+                        <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                            <h3 class="multisteps-form__title">Your User Info</h3>
+                            <div class="multisteps-form__content">
+                                <div class="form-row mt-4">
+                                    <div class="col-12 col-sm-6">
+                                        <input class="multisteps-form__input form-control" type="text" name="first_name" placeholder="First Name"
+                                               value="{{Auth::user() ? Auth::user()->first_name : ''}}" required/>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                                        <input class="multisteps-form__input form-control" type="text" name="last_name" placeholder="Last Name"
+                                               value="{{Auth::user() ? Auth::user()->last_name : ''}}" required/>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-4">
+                                    <div class="col-12 col-sm-6">
+                                        <input class="multisteps-form__input form-control" type="email" name="email" placeholder="Email"
+                                               value="{{Auth::user() ? Auth::user()->email : ''}}" required/>
+                                    </div>
+                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                                        <input class="multisteps-form__input form-control" type="tel" name="phone" placeholder="Telephone"
+                                               value="{{Auth::user() ? Auth::user()->phone : ''}}" required/>
+                                    </div>
+                                </div>
+                                <div class="button-row d-flex mt-4">
+                                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                                </div>
+                            </div>
                         </div>
-                        <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
-                                    <li class="nav-item">
-                                        <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
-                                            <i class="fa fa-credit-card"></i>
-                                            Krediet kaart
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a data-toggle="pill" href="#nav-tab-bancontact" class="nav-link rounded-pill">
-                                            <i class="fa fa-credit-card"></i>
-                                            Bancontact
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a data-toggle="pill" href="#nav-tab-paypal" class="nav-link rounded-pill">
-                                            <i class="fab fa-paypal"></i>
-                                            Paypal
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a data-toggle="pill" href="#nav-tab-bank" class="nav-link rounded-pill">
-                                            <i class="fa fa-university"></i>
-                                            Overschrijving
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div id="nav-tab-card" class="tab-pane fade show active">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="kaartNaam1">Naam op de kaart</label>
-                                                <input type="text" name="kaartNaam" id="kaartNaam1"  required class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kaartNummer1">Kaartnummer</label>
-                                                <div class="input-group">
-                                                    <input type="text" name="kaartnummer" id="kaartNummer1" placeholder="" class="form-control"
-                                                           required>
-                                                    <div class="input-group-append">
-                                                      <span class="input-group-text text-muted">
-                                                    <i class="fab fa-cc-visa mx-1"></i>
-                                                    <i class="fab fa-cc-mastercard mx-1"></i>
-                                                </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <div class="form-group">
-                                                        <label><span class="hidden-xs">Vervaldatum</span></label>
-                                                        <div class="input-group">
-                                                            <input type="number" placeholder="MM" min="1" max="12" name="maand" class="form-control"
-                                                                   required>
-                                                            <input type="number" placeholder="JJ" min="20" max="40" name="jaar"
-                                                                   class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group mb-4">
-                                                        <label data-toggle="tooltip" title="3 delige code op de achterkant van de kaart">CVV
-                                                            <i class="fa fa-question-circle"></i>
-                                                        </label>
-                                                        <input type="text" required class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Betaal</button>
-                                        </form>
+                        <!--single form panel-->
+                        <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                            <h3 class="multisteps-form__title">Your Address</h3>
+                            <div class="multisteps-form__content">
+
+                                <div class="form-row mt-4">
+                                    <div class="col">
+                                        <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
+                                               value="{{Auth::user() ? Auth::user()->adress->street : ''}}" required/>
                                     </div>
-                                    <div id="nav-tab-paypal" class="tab-pane fade">
-                                        <p>
-                                            <form></form>
-                                            <button  type="button" class="btn btn-primary rounded-pill"><i class="fab fa-paypal mr-2"></i> Log into
-                                                my Paypal</button>
-                                        </p>
+                                </div>
+                                <div class="form-row mt-4">
+                                    <div class="col-12 col-sm-6">
+                                        <input class="multisteps-form__input form-control" type="text" name="city" placeholder="City"
+                                               value="{{Auth::user() ? Auth::user()->adress->city : ''}}" required/>
                                     </div>
-                                    <div id="nav-tab-bank" class="tab-pane fade">
-                                        <h6>Bank account details</h6>
-                                        <dl>
-                                            <dt>Bank</dt>
-                                            <dd>KBC</dd>
-                                        </dl>
-                                        <dl>
-                                            <dt>IBAN</dt>
-                                            <dd>BE20 2020 2020 2020</dd>
-                                        </dl>
-                                        <dl>
-                                            <dt> Met gestructureerde mededeling:</dt>
-                                            <dd>+++090/9337/55493+++</dd>
-                                        </dl>
+                                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                        <select class="multisteps-form__select form-control" name="country">
+                                            <option selected="selected">Country...</option>
+                                            <option>België</option>
+                                            <option>Nederland</option>
+                                        </select>
                                     </div>
-                                    <div id="nav-tab-bancontact" class="tab-pane fade">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="kaartNaam2">Naam op de kaart</label>
-                                                <input type="text" name="kaartNaam" id="kaartNaam2"  required class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <label for="kaartNaam2">Kaartnummer</label>
-                                                    <input type="text" name="kaartNummer" id="kaartNummer2" placeholder="" class="form-control"
-                                                           required>
+                                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                        <input class="multisteps-form__input form-control" name="zip" type="text" placeholder="Zip"
+                                               value="{{Auth::user() ? Auth::user()->adress->zip : ''}}"/>
+                                    </div>
+                                </div>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                    <div class="form-row custom-control custom-checkbox">
+                                        <input type="checkbox" value="bewaar" id="factuuradres" name="saveadress" class="custom-control-input">
+                                        <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
+                                    </div>
+                                @endif
+
+                                <div class="button-row d-flex mt-4">
+                                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                                <h3 class="multisteps-form__title">Shipping method</h3>
+                                <div class="multisteps-form__content">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="postpunt" name="deliver_method"
+                                               id="Post">
+                                        <label class="custom-control-label" for="Post">Levering bij postpunt (+€3,00)</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="huis" name="deliver_method"  id="huis">
+                                        <label class="custom-control-label" for="huis">Levering aan huis (+€4,00)</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="afhalen" name="deliver_method"
+                                               id="afhalen">
+                                        <label class="custom-control-label" for="afhalen">Afhalen</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="button-row d-flex mt-4 col-12">
+                                            <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--single form panel-->
+                        <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                            <h3 class="multisteps-form__title">Your Order Info</h3>
+                            <div class="multisteps-form__content">
+                                <div class="row">
+                                    @foreach($cart as $item)
+                                        <div class="col-12 col-md-6 mt-4">
+                                            <div class="card shadow-sm">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{$item['product_name']}}</h5>
+                                                    <select hidden name="products[]" id="">
+                                                        <option value="{{$item['product_id']}}"></option>
+                                                    </select>
+                                                    <strong>Quantity: {{$item['quantity']}}</strong>
+                                                    <a class="btn btn-outline-primary" target="_blank" href="{{route('productDetailPage',
+                                                    \App\Product::findOrFail
+                                                    ($item['product_id'])->slug)}}"
+                                                       title="Item Link">Item
+                                                        Link</a>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <div class="form-group">
-                                                        <label><span class="hidden-xs">Vervaldatum</span></label>
-                                                        <div class="input-group">
-                                                            <input type="number" placeholder="MM" min="1" max="12" name="maand" class="form-control"
-                                                                   required>
-                                                            <input type="number" placeholder="JJ" min="20" max="40" name="jaar" class="form-control"
-                                                                   required>
-                                                        </div>
-                                                    </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="row">
+                                        <div class="col-12 col-md-6 mt-4">
+                                            <div class="card shadow-sm">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Total Price</h5>
+                                                    <input type="number" class="border-0" readonly name="price" value="{{Session::get('cart')
+                                                    ->totalprice}}">
                                                 </div>
                                             </div>
-                                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Betaal</button>
-                                        </form>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="button-row d-flex mt-4 col-12">
+                                        <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                                        <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-    --}}
+                        <!--single form panel-->
+                        <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                            <h3 class="multisteps-form__title">Additional Comments</h3>
+                            <div class="multisteps-form__content">
+                                <div class="form-row mt-4">
+                                    <textarea class="multisteps-form__textarea form-control" name="comments" placeholder="Additional Comments and
+                                    Requirements"></textarea>
+                                </div>
+                                <div class="button-row d-flex mt-4">
+                                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                                    <input class="btn btn-success ml-auto" type="submit"  title="Send" value="send">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-    <script>
-
-    </script>
 @endsection

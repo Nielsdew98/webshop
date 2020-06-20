@@ -114,7 +114,8 @@
                             </div>
 
                             <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordion2">
-                                <div class="card-body">
+                                <div class="card-body d-flex flex-column">
+                                    <a href="{{route('shopPage')}}">All</a>
                                         @foreach($categories as $category)
                                          <a href="{{route('productsPerCategory',$category->id)}}">{{$category->name}}</a>
                                         @endforeach
@@ -202,26 +203,30 @@
                                         <option value="36">36</option>
                                         <option value="doorlopend">doorlopend</option>
                                     </select>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
-                            </form>
 
+                            </form>
                         </div>
                         <div class="col-lg-6 col-12 mb-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect02">Sorteer volgens:</label>
+                            <form action="{{route('sort')}}" method="POST">
+                                @method('POST')
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect02">Sorteer volgens:</label>
+                                    </div>
+                                    <select class="custom-select" name="sort" id="inputGroupSelect02">
+                                        <option selected>Choose...</option>
+                                        <option value="az">A-Z</option>
+                                        <option value="za">Z-A</option>
+                                        <option value="prijsoplopend">Prijs oplopend</option>
+                                        <option value="prijsaflopend">Prijs aflopend</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect02">
-                                    <option selected>Choose...</option>
-                                    <option value="az">A-Z</option>
-                                    <option value="za">Z-A</option>
-                                    <option value="prijsoplopend">Prijs oplopend</option>
-                                    <option value="prijsaflopend">Prijs aflopend</option>
-                                    <option value="leeftijdoplopend">Leeftijd oplopend</option>
-                                    <option value="leeftijdaflopend">Leeftijd aflopend</option>
-                                </select>
-                            </div>
+                            </form>
+
                         </div>
                         @if($products)
                             @foreach($products as $product)
@@ -238,8 +243,8 @@
                                                 @if($product->discount != null)
                                                     <p><span class="d-inline"><del>€{{$product->price}} </del></span><span class="ml-3
                                                         prijs
-                                                         d-inline">€{{$product->price - ($product->price / 100 *
-                                                         $product->discount->percent)}}</span></p>
+                                                         d-inline">€{{round($product->price - ($product->price / 100 *
+                                                         $product->discount->percent),2)}}</span></p>
                                                 @else
                                                     <p class="prijs">€{{$product->price}}</p>
                                                 @endif
@@ -277,7 +282,7 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <h4></h4>
-                                                        <p class="description">{{$product->description}}</p>
+                                                        <p class="description">{!! $product->description !!}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">

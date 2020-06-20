@@ -17,7 +17,6 @@ class CreateAdressesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->index()->unsigned();
             $table->string('street');
-            $table->integer('number');
             $table->string('City');
             $table->integer('Postal_code');
             $table->timestamps();

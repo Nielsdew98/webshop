@@ -41,7 +41,12 @@
                                 <label for="login" class="custom-control-label">Ingelogd blijven</label>
                             </div>
                         </div>
-                        <span><a href="#" class="text-muted">Wachtwoord vergeten</a></span>
+
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
 
                     </div>
                     <button class="btnhover">Login</button>

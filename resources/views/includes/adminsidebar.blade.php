@@ -97,6 +97,18 @@
             <i class="fas fa-plus-circle"></i>
             <span>Add product</span></a>
     </li>
+    <!-- Divider -->
+    <div class="sidebar-heading">
+        MEDIA
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Categories -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('medias.index')}}">
+            <i class="fas fa-camera"></i>
+            <span>All media</span></a>
+    </li>
     <div class="sidebar-heading">
         All Awards
     </div>
@@ -134,10 +146,12 @@
 
     <!-- Nav Item - Categories -->
     <li class="nav-item">
-        <a class="nav-link" href="{{route('reviews.index')}}">
+        <a class="nav-link" href="{{route('adminorder.index')}}">
             <i class="fas fa-shopping-basket"></i>
             <span>All orders</span></a>
     </li>
+
+
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

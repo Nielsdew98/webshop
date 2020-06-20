@@ -61,13 +61,10 @@
                                             </div>
                                         </section>
                                         <ul class="social p-0 m-0  d-flex">
-                                            <li><a href="" data-producttitle="{{$discount->product->title}}"
-                                                   data-productDescription="{{$discount->product->description}}"
-                                                   data-toggle="modal"
-                                                   data-target="#quickViewProduct"
-                                                   data-placement="bottom"
+                                            <li><a href="" data-toggle="modal"
+                                                   data-target="#quickViewProduct{{$product->id}}"
                                                    title="Snel bekijken"
-                                                   class="text-center border rounded mx-2 position-relative d-block"><i
+                                                   class="quickView d-flex align-items-center justify-content-center border rounded mx-2 position-relative d-block"><i
                                                         class="fa fa-search"></i></a>
                                             </li>
                                             <li><a href="{{route('addToCart',$discount->id)}}" data-toggle="tooltip" data-placement="bottom" title="Toevoegen aan winkelmand"
@@ -76,41 +73,51 @@
                                         </ul>
                                     </article>
                                 </div>
+                                <div class="modal fade" id="quickViewProduct{{$product->id}}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">{{$product->title}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <img class="img-fluid" id="modalProductImage" alt="doos gloomhaven"
+                                                             src="{{asset($product->default_image->file)}}">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h4></h4>
+                                                        <p class="description">{!! $product->description !!}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    @if($product->discount != null)
+                                                        <p><span class="d-inline"><del>€{{$product->price}} </del></span><span class="ml-3
+                                                        prijs
+                                                         d-inline">€{{$product->price - ($product->price / 100 *
+                                                         $product->discount->percent)}}</span></p>
+                                                    @else
+                                                        <p class="prijs">€{{$product->price}}</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
+                                                <button type="button" class="btn btn-primary">Bekijk product</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         @endif
                     </div>
                 </div>
             </div>
-            <div class="row"></div>
         </div>
     </section>
-    <div class="modal fade" id="quickViewProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title modalProductTitle">Gloomhaven</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <img class="img-fluid" id="modalProductImage" alt="doos gloomhaven" src="images/gloomhaven1.jpg">
-                        </div>
-                        <div class="col-lg-6">
-                            <h4>Gloomhaven</h4>
-                            <p>Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives. Players
-                                will take on the role of a wandering adventurer with their own special set of skills and their own reasons for traveling to this dark corner of the world. Players must work together out of necessity to clear out menacing dungeons and forgotten ruins. In the process, they will enhance their abilities with experience and loot, discover new locations to explore and plunder, and expand an ever-branching story fueled by the decisions they make.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
-                    <button type="button" class="btn btn-primary">Bekijk product</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

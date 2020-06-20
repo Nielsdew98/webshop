@@ -1,6 +1,16 @@
 import ScrollReveal from 'scrollreveal'
 
 $( document ).ready(function() {
+    $("#checkoutUserInfo").submit(function(){
+        var vnaam = $('#vnaam').val();
+        var naam = $('#naam').val();
+        var adres = $('#adres').val();
+        var postcode = $('#postcode').val();
+        var gemeente = $('#gemeente').val();
+
+       $('#ordername').attr("placeholder",vnaam + ' ' + naam);
+    });
+
     //Klok die aftelt naar datum
     const second = 1000,
         minute = second * 60,

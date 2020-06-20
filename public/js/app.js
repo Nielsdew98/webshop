@@ -26417,6 +26417,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     toolbar: [// [groupName, [list of button]]
     ['style', ['bold', 'italic', 'underline']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['insert', ['link', 'picture', 'video']], ['view', ['undo', 'redo']]]
   });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#checkoutUserInfo').submit(function (event) {
+    event.preventDefault();
+    var firtsname = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#Vnmaa").val();
+    var lastname = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#Naam").val();
+    var adres = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#Adres").val();
+    document.getElementById('ordername').placeholder(firstname + lastname);
+  });
 });
 
 /***/ }),

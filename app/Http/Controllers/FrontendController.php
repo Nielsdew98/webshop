@@ -6,6 +6,7 @@ use App\Cart;
 use App\Category;
 use App\Discount;
 use App\Filters\ProductQueryFilter;
+use App\Newsletter;
 use App\Order;
 use App\Product;
 use App\User;
@@ -93,9 +94,38 @@ class FrontendController extends Controller
         return view('front.shop',compact('categories','products'));
     }
     public function productsPerPage(Request $request){
-        $products = Product::paginate($request->qtyproduct)->where('is_active',1);
-        $categories = Category::select('name','id')->get();
-        return view('front.shop',compact('products','categories'));
+        if ($request->qtyproduct == 'doorlopend'){
+            $products = Product::all()->where('is_active',1);
+            $categories = Category::select('name','id')->get();
+            return view('front.shop',compact('products','categories'));
+        }else{
+            $products = Product::paginate($request->qtyproduct)->where('is_active',1);
+            $categories = Category::select('name','id')->get();
+            return view('front.shop',compact('products','categories'));
+        }
+
+    }
+    public function sort(Request $request){
+
+        switch ($request->sort){
+            case 'az':
+                $products = Product::orderBy('title','ASC')->where('is_active',1)->paginate(8);
+                $categories = Category::select('name','id')->get();
+                return view('front.shop',compact('products','categories'));
+            case 'za':
+                $products = Product::orderBy('title','DESC')->where('is_active',1)->paginate(8);
+                $categories = Category::select('name','id')->get();
+                return view('front.shop',compact('products','categories'));
+            case 'prijsoplopend':
+                $products = Product::orderBy('price','ASC')->where('is_active',1)->paginate(8);
+                $categories = Category::select('name','id')->get();
+                return view('front.shop',compact('products','categories'));
+            case 'prijsaflopend':
+                $products = Product::orderBy('price','DESC')->where('is_active',1)->paginate(8);
+                $categories = Category::select('name','id')->get();
+                return view('front.shop',compact('products','categories'));
+        }
+
     }
     //productpage
     public function product($slug){
@@ -124,6 +154,13 @@ class FrontendController extends Controller
             $cart = $cart->products;
             return view('front.checkout',compact('cart'));
         }
+    }
+    public function accountPage(){
+            $user = User::findOrFail(Auth::id());
+            return view('front.account',compact('user'));
+    }
 
+    public function newsletter(Request $request){
+            Newsletter::create($request);
     }
 }

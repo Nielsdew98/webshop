@@ -14,6 +14,9 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
     public function products(){
-        return $this->belongsToMany('App\Order','order_product');
+        return $this->belongsToMany('App\Product','order_product');
+    }
+    public function guest(){
+        return $this->belongsTo('App\Guest');
     }
 }

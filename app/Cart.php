@@ -21,7 +21,7 @@ class Cart extends Model
 
     public function add($product, $product_id){
         if($product->discount != null ){
-            $discountprice =$product->price - ($product->price / 100 * $product->discount->percent);
+            $discountprice = round($product->price - ($product->price / 100 * $product->discount->percent),2);
             $shopItems = ['quantity'=> 0, 'product_id' => 0, 'product_name'=>$product->title,'product_price'=>$discountprice,
                 'product_image'=>$product->default_image->file,'product_description'=>$product->description,'product'=>$product];
         }else{
@@ -37,7 +37,7 @@ class Cart extends Model
         $shopItems['product_id'] = $product_id;
         $shopItems['product_name'] = $product->title;
         if($product->discount != null ){
-            $discountprice =$product->price - ($product->price / 100 * $product->discount->percent);
+            $discountprice = round($product->price - ($product->price / 100 * $product->discount->percent),2);
             $shopItems['product_price'] = $discountprice;
         }else{
             $shopItems['product_price'] = $product->price;
@@ -48,7 +48,7 @@ class Cart extends Model
 
         $this->totalQuantity++;
         if($product->discount != null ){
-            $discountprice =$product->price - ($product->price / 100 * $product->discount->percent);
+            $discountprice =round($product->price - ($product->price / 100 * $product->discount->percent),2);
             $this->totalprice += $discountprice;
         }else{
             $this->totalprice += $product->price;

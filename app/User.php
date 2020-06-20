@@ -56,4 +56,12 @@ class User extends Authenticatable implements MustVerifyEmail
             }
         }
     }
+    public function areAdmins()
+    {
+        return $this->whereHas('roles', function ($query) {
+
+            $query->where('name', '=', 'admin');
+
+        })->get();
+    }
 }

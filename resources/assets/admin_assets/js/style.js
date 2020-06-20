@@ -55,4 +55,13 @@ $(document).ready(function() {
                 ['view', ['undo','redo']],
             ],
         });
+
+    $('#checkoutUserInfo').submit(function( event ) {
+        event.preventDefault();
+       var firtsname =  $("#Vnmaa").val();
+       var lastname =  $("#Naam").val();
+       var adres =  $("#Adres").val();
+
+       document.getElementById('ordername').placeholder(firstname + lastname);
+    });
 });

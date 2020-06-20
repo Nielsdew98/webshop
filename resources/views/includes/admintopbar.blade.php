@@ -6,17 +6,6 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    <!-- Topbar Search -->
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                </button>
-            </div>
-        </div>
-    </form>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -53,6 +42,7 @@
                 <h6 class="dropdown-header">
                     Alerts Center
                 </h6>
+              {{--  @foreach($notifications as $notification)
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
@@ -60,10 +50,11 @@
                         </div>
                     </div>
                     <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        <div class="small text-gray-500">{{$notification->created_at}}</div>
+                        <span class="font-weight-bold">{{$notification->data}}</span>
                     </div>
                 </a>
+                @endforeach--}}
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-success">
@@ -161,10 +152,10 @@
                     Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{__('Logout') }}" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                </a>
+                <form id="logout-form" class="text-center" action="{{ url('logout') }}" method="POST">
+                    @csrf
+                    <button class="border-0" type="submit"> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</button>
+                </form>
             </div>
         </li>
 

@@ -7,28 +7,40 @@
         <section id="contact" class="row">
             <div class="col-12 my-6">
                 <h2 class="text-center">Contacteer ons</h2>
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
             </div>
             <div class="mx-auto">
-                <form id="contactformulier" class="bg-transparent p-6">
+                <form id="contactformulier" action="{{route('contactus.store')}}" method="POST" class="bg-transparent p-6">
+                    @method('POST')
+                    @csrf
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <input type="text" class="form-control" id="Naam" required="" placeholder="Naam" value="{{Auth::user() ? Auth::user()->first_name : ''}}">
+                            <input type="text" class="form-control" id="Naam" name="name" required="" placeholder="Naam" value="{{Auth::user() ?
+                            Auth::user()
+                            ->first_name : ''}}">
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="email" class="form-control" id="Email" required="" placeholder="Email" value="{{Auth::user() ? Auth::user()
+                            <input type="email" class="form-control" id="Email" required="" name="email" placeholder="Email" value="{{Auth::user() ?
+                            Auth::user()
                          ->email : ''}}">
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="tel" class="form-control" id="Telefoon" required="" placeholder="Telefoon" value="{{Auth::user() ? Auth::user()
+                            <input type="tel" class="form-control" id="Telefoon" required="" name="phone" placeholder="Telefoon" value="{{Auth::user
+                            () ?
+                            Auth::user()
                             ->phone : ''}}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <textarea name="bericht" id="Adres" class="form-control" required="" placeholder="Bericht"></textarea>
+                            <textarea  id="Adres" class="form-control" required="" name="message" placeholder="Bericht"></textarea>
                         </div>
                     </div>
-                    <button class="btnhover mt-4">Verstuur</button>
+                    <input type="submit" class="btnhover mt-4">
                 </form>
             </div>
         </section>

@@ -359,7 +359,9 @@
                 <div class="row mx-0">
                     <div class="col-sm-12">
                         <div class="content">
-                            <form>
+                            <form method="POST" action="{{route('newsletter')}}">
+                                @csrf
+                                @method('POST')
                                 <h2 class="my-3 text-uppercase">Abonneer je op onze nieuwsbrief</h2>
                                 <div class="input-group">
                                     <input type="email" class="form-control" placeholder="Vul hier je email in">

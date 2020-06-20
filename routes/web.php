@@ -33,7 +33,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/awards','AdminAwardsController');
     Route::resource('admin/products','AdminProductsController');
     Route::resource('admin/discounts','AdminDiscountsController');
-    Route::resource('admin/orders','AdminOrderController');
+    Route::get('admin/orders','OrderController@index')->name('adminorder.index');
 });
 
 Route::get('admin/roles/restore/{role}','AdminRolesController@roleRestore')->name('admin.roleRestore');
@@ -44,11 +44,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //FRONT-END ROUTES
 Route::get('/','FrontendController@index')->name('homepage');
 Route::get('/contact','FrontendController@contact')->name('contactPage');
+Route::post('/contact', 'ContactController@saveContact')->name('contactus.store');
+
 //search
 Route::post('/search','FrontendController@search')->name('searchProduct');
 //shop
 Route::get('/shop','FrontendController@shop')->name('shopPage');
-Route::post('/shop','FrontendController@productsPerPage')->name('productsPerPage');
+Route::post('/shop/perpage','FrontendController@productsPerPage')->name('productsPerPage');
+Route::post('/shop/sort','FrontendController@sort')->name('sort');
 Route::get('/shop/quickview/{id}','Frontendcontroller@quickview')->name('quickView');
 Route::get('/shop/category/{id}','Frontendcontroller@productsPerCategory')->name('productsPerCategory');
 
@@ -72,3 +75,7 @@ Route::get('/checkout','FrontendController@checkout')->name('checkout');
 Route::post('/checkout/order','OrderController@createOrder')->name('createOrder');
 Route::get('/checkout/order/pay/{id}','PaymentController@preparepayment')->name('payment.mollie');
 Route::get('/checkout/order/payment-succes/{id}','PaymentController@paymentSuccess')->name('payment.success');
+Route::get('/checkout/order/payment-failed/{id}','PaymentController@paymentFailed')->name('payment.failed');
+Route::get('/account','FrontendController@accountPage')->name('account');
+
+Route::post('/newsletter','FrontendController@newsletter')->name('newsletter');
