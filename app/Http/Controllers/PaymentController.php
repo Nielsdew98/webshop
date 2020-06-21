@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Notifications\OrderReceived;
 use App\Order;
+use App\Product;
+use App\User;
 use Illuminate\Http\Request;
+use Notification;
 use Illuminate\Support\Facades\Session;
 use Mollie\Laravel\Facades\Mollie;
 use function GuzzleHttp\Psr7\str;
@@ -50,21 +53,23 @@ class PaymentController extends Controller
         $order->payment_status = 'paid';
         $order->save();
         $cart = Session::get('cart');
-
-      for ($i=0;$i<count(array($cart));$i++){
-          $arrayCart = array($cart);
-
-          if ($arrayCart[$i]->products[$i+1]['product_id'] = $order->products[$i]->id){
-                  $quantity = $arrayCart[$i]->products[$i+1]['quantity'];
-                  $oldstock = $order->products[$i]->stock->stock;
-                  $newstock = $oldstock - $quantity;
-                  $order->products[$i]->stock->update(['stock' => $newstock]);
-          }
-          $item = Session::forget('cart', $i);
-          $i++;
-      }
-
-
+        $arrayCart = array($cart);
+        
+        for($i=0;$i<count(Product::all());$i++){
+            if (!empty($arrayCart[0]->products[$i]['product_id'])){
+                $id = $arrayCart[0]->products[$i]['product_id'];
+                $quantity = $arrayCart[0]->products[$i]['quantity'];
+                $product = Product::where('id',$id)->first();
+                $oldstock = $product->stock->stock;
+                $newstock = $oldstock - $quantity;
+                $product->stock->update(['stock' => $newstock]);
+            }
+        }
+        foreach ($cart as $item){
+            $i=0;
+            $item = Session::forget('cart', $i);
+            $i++;
+        }
         return view('front.paymentsucces',compact('order'));
 
     }

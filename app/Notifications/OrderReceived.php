@@ -50,7 +50,8 @@ class OrderReceived extends Notification
     }
     public function toDatabase(){
         return[
-            'order_id' => $this->order->id
+            'order_id' => $this->order->id,
+            'message' => 'A new order has been received',
         ];
     }
     /**
@@ -63,7 +64,8 @@ class OrderReceived extends Notification
     {
         return [
             //
-            'order_id' => $this->id
+            'order_id' => $this->id,
+            'message' => 'A new order has been received',
         ];
     }
 }

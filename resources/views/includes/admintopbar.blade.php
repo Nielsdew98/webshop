@@ -30,7 +30,7 @@
             </div>
         </li>
 
-        <!-- Nav Item - Alerts -->
+   {{--     <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
@@ -42,7 +42,7 @@
                 <h6 class="dropdown-header">
                     Alerts Center
                 </h6>
-              {{--  @foreach($notifications as $notification)
+              --}}{{--  @foreach($notifications as $notification)
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
@@ -54,7 +54,7 @@
                         <span class="font-weight-bold">{{$notification->data}}</span>
                     </div>
                 </a>
-                @endforeach--}}
+                @endforeach--}}{{--
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-success">
@@ -136,7 +136,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
             </div>
         </li>
-
+--}}
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->

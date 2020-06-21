@@ -288,19 +288,17 @@
                         <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                             <h3 class="multisteps-form__title">Your Address</h3>
                             <div class="multisteps-form__content">
-                                @if(\Illuminate\Support\Facades\Auth::check())
-                                    <?php $user = \App\User::findOrFail(\Illuminate\Support\Facades\Auth::id())?>
-                                    @if($user)
+                                    @if($adress = \App\Adress::where('user_id',Auth::id())->first())
                                             <div class="form-row mt-4">
                                                 <div class="col">
                                                     <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
-                                                           value="{{$user->address ? $user->adress->street : ''}}" required/>
+                                                           value="{{$adress->street }}" required/>
                                                 </div>
                                             </div>
                                             <div class="form-row mt-4">
                                                 <div class="col-12 col-sm-6">
                                                     <input class="multisteps-form__input form-control" type="text" name="city" placeholder="City"
-                                                           value="{{$user->address ? $user->adress->city : ''}}" required/>
+                                                           value="{{$adress->City}}" required/>
                                                 </div>
                                                 <div class="col-6 col-sm-3 mt-4 mt-sm-0">
                                                     <select class="multisteps-form__select form-control" name="country">
@@ -311,18 +309,14 @@
                                                 </div>
                                                 <div class="col-6 col-sm-3 mt-4 mt-sm-0">
                                                     <input class="multisteps-form__input form-control" name="zip" type="text" placeholder="Zip"
-                                                           value="{{$user->address ? $user->adress->zip : ''}}"/>
+                                                           value="{{$adress->Postal_code}}"/>
                                                 </div>
                                             </div>
-                                                <div class="form-row custom-control custom-checkbox">
-                                                    <input type="checkbox" value="bewaar" id="factuuradres" name="saveadress" class="custom-control-input">
-                                                    <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
-                                                </div>
-                                    @endif
-                                @else
+                                    @else
                                     <div class="form-row mt-4">
                                         <div class="col">
-                                            <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
+                                            <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Street +
+                                            number"
                                                    value="" required/>
                                         </div>
                                     </div>
@@ -343,12 +337,17 @@
                                                    value=""/>
                                         </div>
                                     </div>
+                                    <div class="form-row custom-control custom-checkbox">
+                                        <input type="checkbox" value="bewaar" id="factuuradres" name="saveadress" class="custom-control-input">
+                                        <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
+                                    </div>
                                 @endif
                                 <div class="button-row d-flex mt-4">
                                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
                                     <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                                 </div>
                             </div>
+
                         </div>
                         <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                                 <h3 class="multisteps-form__title">Shipping method</h3>
@@ -388,6 +387,7 @@
                                                     <select hidden name="products[]" id="">
                                                         <option value="{{$item['product_id']}}"></option>
                                                     </select>
+                                                    <strong>Price: {{$item['product_price'] * $item['quantity']}}</strong>
                                                     <strong>Quantity: {{$item['quantity']}}</strong>
                                                     <a class="btn btn-outline-primary" target="_blank" href="{{route('productDetailPage',
                                                     \App\Product::findOrFail
@@ -398,17 +398,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                </div>
-                                <div class="row">
-                                        <div class="col-12 col-md-6 mt-4">
-                                            <div class="card shadow-sm">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Total Price</h5>
-                                                    <input type="number" class="border-0" readonly name="price" value="{{Session::get('cart')
-                                                    ->totalprice}}">
-                                                </div>
-                                            </div>
-                                        </div>
                                 </div>
                                 <div class="row">
                                     <div class="button-row d-flex mt-4 col-12">

@@ -65,7 +65,7 @@
                                     <div class="foto position-relative w-100 h-100">
                                         <img class="img-fluid w-100 h-100" alt="{{$product->title}}" src="{{asset($product->default_image->file)}}">
                                     </div>
-                                    <div class="producttekst w-100">
+                                    <div class="producttekst p-5 w-100">
                                         <header>
                                             <h3>{{$product->title}}</h3>
                                         </header>

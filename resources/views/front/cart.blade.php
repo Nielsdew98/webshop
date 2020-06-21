@@ -23,7 +23,7 @@
                             <div class="col-12 text-sm-center text-md-left col-md-6">
                                 <h4><strong>{{$item['product_name']}}</strong></h4>
                                 <h4>
-                                    <small>{{Str::limit($item['product_description'],200,'(..)')}}</small>
+                                    <small>{!!Str::words($item['product_description'],$limit = 100, $end = '...')!!}</small>
                                 </h4>
                             </div>
                             <div class="col-12 text-sm-center col-md-4 text-md-right row align-items-center">
