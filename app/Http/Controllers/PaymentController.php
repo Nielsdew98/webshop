@@ -54,8 +54,8 @@ class PaymentController extends Controller
         $order->save();
         $cart = Session::get('cart');
         $arrayCart = array($cart);
-        
-        for($i=0;$i<count(Product::all());$i++){
+        $count = count(Product::all());
+        for($i=0;$i<($count+1);$i++){
             if (!empty($arrayCart[0]->products[$i]['product_id'])){
                 $id = $arrayCart[0]->products[$i]['product_id'];
                 $quantity = $arrayCart[0]->products[$i]['quantity'];
