@@ -6,6 +6,21 @@ $zwart: #1d1e22;
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 //General
+ #shop{
+     img{
+         max-width: 100%;
+         height: auto;
+     }
+ }
+ #product{
+     #accordion{
+         img{
+             max-width: 100%;
+             height: auto;
+         }
+
+     }
+ }
 .black{
     background-color: $zwart !important;
 }

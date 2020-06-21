@@ -24,7 +24,7 @@ class FrontendController extends Controller
         Unirest\Request::verifyPeer(false);
         $instagram = new \InstagramScraper\Instagram();
         $nonPrivateAccountMedias = $instagram->getMedias('boardgamersdbe',4);
-        $newproducts = Product::latest()->take(5)->get();
+        $newproducts = Product::latest()->take(6)->get();
         $discount = Discount::with(['product'])->where('homepage',1)->first();
         return view('index',compact('newproducts','discount','nonPrivateAccountMedias'));
     }

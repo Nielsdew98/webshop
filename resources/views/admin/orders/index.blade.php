@@ -42,7 +42,7 @@
                                 <p class="badge badge-pill badge-primary">{{$product->title}}</p>
                             @endforeach
                         </td>
-                        <td>{{$order->price}}</td>
+                        <td>{{$order->total_price}}</td>
                         <td>{{$order->payment_status}}</td>
                     </tr>
 

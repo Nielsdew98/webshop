@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Notifications\OrderReceived;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -27,6 +28,12 @@ class PaymentController extends Controller
             ],
         ]);
 
+        $notification = new OrderReceived($order);
+
+        //Notify Admins
+        $admin = new User();
+
+        Notification::send($admin->areAdmins(), $notification);
         $payment = Mollie::api()->payments->get($payment->id);
 
         // redirect customer to Mollie checkout page
@@ -43,17 +50,19 @@ class PaymentController extends Controller
         $order->payment_status = 'paid';
         $order->save();
         $cart = Session::get('cart');
-      /*  foreach (){
-            $newstock = $product->stock->decrement('stock',$quantity);
-            dd($newstock);
-            $product->stock->update($newstock);
-        };*/
-        foreach ($cart as $item){
-            $i = 0;
-            $item = Session::forget('cart', $i);
-            $i++;
-        };
-        dd($order);
+
+      for ($i=0;$i<count(array($cart));$i++){
+          $arrayCart = array($cart);
+
+          if ($arrayCart[$i]->products[$i+1]['product_id'] = $order->products[$i]->id){
+                  $quantity = $arrayCart[$i]->products[$i+1]['quantity'];
+                  $oldstock = $order->products[$i]->stock->stock;
+                  $newstock = $oldstock - $quantity;
+                  $order->products[$i]->stock->update(['stock' => $newstock]);
+          }
+          $item = Session::forget('cart', $i);
+          $i++;
+      }
 
 
         return view('front.paymentsucces',compact('order'));

@@ -30,8 +30,8 @@ class HomeController extends Controller
     {
         if(Auth::check()){
             if(Auth::user()->isAdmin()){
-                $products = Product::latest()->take(5)->get();
-                $orders = Order::latest()->take(5)->get();
+                    $products = Product::latest()->take(5)->get();
+                    $orders = Order::latest()->take(5)->get();
                 return view('admin.index',compact('products','orders'));
             }
         }

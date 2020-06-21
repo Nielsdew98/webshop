@@ -52053,7 +52053,7 @@ new Vue({});
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\laravel\resources\js\frontapp.js */"./resources/js/frontapp.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\eindwerklaravel\resources\js\frontapp.js */"./resources/js/frontapp.js");
 
 
 /***/ })

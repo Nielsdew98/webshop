@@ -288,37 +288,62 @@
                         <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                             <h3 class="multisteps-form__title">Your Address</h3>
                             <div class="multisteps-form__content">
-
-                                <div class="form-row mt-4">
-                                    <div class="col">
-                                        <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
-                                               value="{{Auth::user() ? Auth::user()->adress->street : ''}}" required/>
-                                    </div>
-                                </div>
-                                <div class="form-row mt-4">
-                                    <div class="col-12 col-sm-6">
-                                        <input class="multisteps-form__input form-control" type="text" name="city" placeholder="City"
-                                               value="{{Auth::user() ? Auth::user()->adress->city : ''}}" required/>
-                                    </div>
-                                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
-                                        <select class="multisteps-form__select form-control" name="country">
-                                            <option selected="selected">Country...</option>
-                                            <option>België</option>
-                                            <option>Nederland</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6 col-sm-3 mt-4 mt-sm-0">
-                                        <input class="multisteps-form__input form-control" name="zip" type="text" placeholder="Zip"
-                                               value="{{Auth::user() ? Auth::user()->adress->zip : ''}}"/>
-                                    </div>
-                                </div>
                                 @if(\Illuminate\Support\Facades\Auth::check())
-                                    <div class="form-row custom-control custom-checkbox">
-                                        <input type="checkbox" value="bewaar" id="factuuradres" name="saveadress" class="custom-control-input">
-                                        <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
+                                    <?php $user = \App\User::findOrFail(\Illuminate\Support\Facades\Auth::id())?>
+                                    @if($user)
+                                            <div class="form-row mt-4">
+                                                <div class="col">
+                                                    <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
+                                                           value="{{$user->address ? $user->adress->street : ''}}" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-row mt-4">
+                                                <div class="col-12 col-sm-6">
+                                                    <input class="multisteps-form__input form-control" type="text" name="city" placeholder="City"
+                                                           value="{{$user->address ? $user->adress->city : ''}}" required/>
+                                                </div>
+                                                <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                                    <select class="multisteps-form__select form-control" name="country">
+                                                        <option selected="selected">Country...</option>
+                                                        <option>België</option>
+                                                        <option>Nederland</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                                    <input class="multisteps-form__input form-control" name="zip" type="text" placeholder="Zip"
+                                                           value="{{$user->address ? $user->adress->zip : ''}}"/>
+                                                </div>
+                                            </div>
+                                                <div class="form-row custom-control custom-checkbox">
+                                                    <input type="checkbox" value="bewaar" id="factuuradres" name="saveadress" class="custom-control-input">
+                                                    <label for="factuuradres" class="custom-control-label">Bewaar mijn adres voor later</label>
+                                                </div>
+                                    @endif
+                                @else
+                                    <div class="form-row mt-4">
+                                        <div class="col">
+                                            <input class="multisteps-form__input form-control" type="text" name="adress" placeholder="Address 1"
+                                                   value="" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-4">
+                                        <div class="col-12 col-sm-6">
+                                            <input class="multisteps-form__input form-control" type="text" name="city" placeholder="City"
+                                                   value="" required/>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                            <select class="multisteps-form__select form-control" name="country">
+                                                <option selected="selected">Country...</option>
+                                                <option>België</option>
+                                                <option>Nederland</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mt-4 mt-sm-0">
+                                            <input class="multisteps-form__input form-control" name="zip" type="text" placeholder="Zip"
+                                                   value=""/>
+                                        </div>
                                     </div>
                                 @endif
-
                                 <div class="button-row d-flex mt-4">
                                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
                                     <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>

@@ -19,13 +19,22 @@ class OrderController extends Controller
         $user = User::where('email',$request->email)->get();
         if (count($user)>0){
             $user = User::where('email',$request->email)->first();
-            if ($request->saveadress == 'bewaar'){
+            if($user->address){
+                $oldadress = $user->adress;
                 $adress = new Adress();
                 $adress->user_id = $user->id;
                 $adress->street = $request->adress;
                 $adress->city = $request->city;
                 $adress->postal_code = $request->zip;
-                $adress->save();
+                $adress->update($adress);
+                if ($request->saveadress == 'bewaar'){
+                    $adress = new Adress();
+                    $adress->user_id = $user->id;
+                    $adress->street = $request->adress;
+                    $adress->city = $request->city;
+                    $adress->postal_code = $request->zip;
+                    $adress->save();
+                }
             }
             $order = new Order();
             $order->user_id = $user->id;
@@ -34,9 +43,6 @@ class OrderController extends Controller
             $order->payment_status = 'in behandeling';
             $order->save();
             $order->products()->sync($request->products, false);
-            //request()->user()->notify(new OrderReceived($order));
-            $admins = new User();
-            Notification::send($admins->areAdmins(), new OrderReceived($order));
         }else{
             $guest = new Guest();
             $guest->first_name = $request->first_name;
@@ -55,9 +61,6 @@ class OrderController extends Controller
             $order->payment_status = 'in behandeling';
             $order->save();
             $order->products()->sync($request->products, false);
-           // request()->user()->notify(new OrderReceived($order));
-            $admins = new User();
-            Notification::send($admins->areAdmins(), new OrderReceived($order));
         }
 
        return redirect()->route('payment.mollie', ['id' => $order->id]);

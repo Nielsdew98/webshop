@@ -6065,6 +6065,16 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+#shop img {
+  max-width: 100%;
+  height: auto;
+}
+
+#product #accordion img {
+  max-width: 100%;
+  height: auto;
+}
+
 .black {
   background-color: #1d1e22 !important;
 }

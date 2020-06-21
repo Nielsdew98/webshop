@@ -57,99 +57,89 @@
         <section id="nieuwbinnen" class="w-100 mx-0 my-6">
             <div class="col-lg-10 offset-lg-1">
                 <h2 class="text-center my-6">Nieuw Binnen</h2>
-                <div class="row mx-0">
-                    <div class="col-lg-8 my-3">
-                        <article class="cube">
-                            <div class="foto position-relative">
-                                <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                            </div>
-                            <div class="producttekst w-100">
-                                <header>
-                                    <h3>Gloomhaven</h3>
-                                </header>
-                                <p>€115</p>
-                                <button class="btnhover" onclick="window.location.href='product.html';" >Meer info</button>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="row mx-0">
-                            <div class="col-12">
-                                <article class="cube">
-                                    <div class="foto position-relative">
-                                        <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
+                <div class="row mx-0 my-3">
+                    @if($newproducts)
+                        @foreach($newproducts as $product)
+                            <div class="col-lg-4 my-2">
+                                <article class="cube w-100 h-100">
+                                    <div class="foto position-relative w-100 h-100">
+                                        <img class="img-fluid w-100 h-100" alt="{{$product->title}}" src="{{asset($product->default_image->file)}}">
                                     </div>
                                     <div class="producttekst w-100">
                                         <header>
-                                            <h3>Gloomhaven</h3>
+                                            <h3>{{$product->title}}</h3>
                                         </header>
-                                        <p>€115</p>
-                                        <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
+                                        <div class="price">
+                                            @if($product->discount != null)
+                                                <p><span class="d-inline"><del>€{{$product->price}} </del></span><span class="ml-3
+                                                        prijs
+                                                         d-inline">€{{round($product->price - ($product->price / 100 *
+                                                         $product->discount->percent),2)}}</span></p>
+                                            @else
+                                                <p class="prijs">€{{$product->price}}</p>
+                                            @endif
+                                        </div>
+                                        <a class="btnhover" href="{{route('productDetailPage',\App\Product::findOrFail($product->id)->slug)}}">Meer info</a>
                                     </div>
                                 </article>
                             </div>
-                            <div class="col-12 mt-4">
-                                <article class="cube">
-                                    <div class="foto position-relative">
-                                        <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
+                        @endforeach
+                    @endif
+               {{--     @if($newproducts)
+                        @for($i=0;$i<count($newproducts);$i++)
+                            @if($i = 1)
+                                <div class="col-lg-8 my-3">
+                                    <article class="cube">
+                                        <div class="foto position-relative">
+                                            <img class="img-fluid" alt="{{$newproducts[$i]->title}}" src="{{asset($newproducts[$i]->default_image->file)}}">
+                                        </div>
+                                        <div class="producttekst w-100">
+                                            <header>
+                                                <h3>{{$newproducts[$i]->title}}</h3>
+                                            </header>
+                                            <p>{{$newproducts[$i]->price}}</p>
+                                            <a class="btnhover" href="{{route('productDetailPage',\App\Product::findOrFail($newproducts[$i]->id)->slug)}}">Meer info</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            @elseif($i=1)
+                                <div class="col-lg-4 my-3">
+                                    <div class="row mx-0">
+                                        <div class="col-12">
+                                            <article class="cube">
+                                                <div class="foto position-relative">
+                                                    <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
+                                                </div>
+                                                <div class="producttekst w-100">
+                                                    <header>
+                                                        <h3>Gloomhaven</h3>
+                                                    </header>
+                                                    <p>€115</p>
+                                                    <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
+                                                </div>
+                                            </article>
+                                        </div>
+                            @elseif($i = 2)
+                                            <div class="col-12 mt-4">
+                                                <article class="cube">
+                                                    <div class="foto position-relative">
+                                                        <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
+                                                    </div>
+                                                    <div class="producttekst w-100">
+                                                        <header>
+                                                            <h3>Gloomhaven</h3>
+                                                        </header>
+                                                        <p>€115</p>
+                                                        <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
+                                                    </div>
+                                                </article>
+                                            </div>
                                     </div>
-                                    <div class="producttekst  w-100">
-                                        <header>
-                                            <h3>Gloomhaven</h3>
-                                        </header>
-                                        <p>€115</p>
-                                        <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                                    </div>
-                                </article>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <div class="col-lg-4">
-                        <article class="cube my-3">
-                            <div class="foto position-relative ">
-                                <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                            </div>
-                            <div class="producttekst w-100">
-                                <header>
-                                    <h3>Gloomhaven</h3>
-                                </header>
-                                <p>€115</p>
-                                <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4">
-                        <article class="cube my-3">
-                            <div class="foto position-relative">
-                                <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                            </div>
-                            <div class="producttekst w-100">
-                                <header>
-                                    <h3>Gloomhaven</h3>
-                                </header>
-                                <p>€115</p>
-                                <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4">
-                        <article class="cube my-3">
-                            <div class="foto position-relative">
-                                <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                            </div>
-                            <div class="producttekst w-100">
-                                <header>
-                                    <h3>Gloomhaven</h3>
-                                </header>
-                                <p>€115</p>
-                                <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
+                            @endif
+                        @endfor
+                    @endif--}}
         </section>
         <section id="qoute" class="w-100 mx-0 my-6">
             <h2 id="text">"We don't stop playing because we grow old.<br>
