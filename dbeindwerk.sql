@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 30 jun 2020 om 08:42
+-- Gegenereerd op: 30 jun 2020 om 08:45
 -- Serverversie: 8.0.18
 -- PHP-versie: 7.2.25
 
@@ -684,7 +684,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `is_active`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `phone`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Niels', 'De Witte', 'niels984@gmail.com', '2020-06-28 10:13:11', '$2y$10$ZgzMlSosUj/6REBaUoFbde6W55yGl5oCORORgM/Bvijh3cFLHCaFu', '1', NULL, NULL, NULL, NULL);
+(1, 1, 'Admin', 'Admin', 'admin@webshop.be', '2020-06-28 10:13:11', '$2y$10$ZgzMlSosUj/6REBaUoFbde6W55yGl5oCORORgM/Bvijh3cFLHCaFu', '1', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
