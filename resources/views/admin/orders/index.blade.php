@@ -50,7 +50,7 @@
             @endif
             </tbody>
         </table>
-        {{ $order->links }}
+        {{ $orders->links() }}
     </div>
 
 @endsection

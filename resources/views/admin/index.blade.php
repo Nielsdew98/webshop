@@ -3,61 +3,6 @@
     Dashboard
 @endsection
 @section('content')
-        <div class="col-12">
-            <div class="card p-2 mb-2">
-                <h4 class="header-title mb-3">Revenue Analytics</h4>
-                <div class="row">
-                    <div class="col-lg-8" dir="ltr">
-                        <div class="text-center">
-                            <p class="text-muted font-15 font-family-secondary mb-0">
-                                <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-light"></i> Desktops</span>
-                                <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-danger"></i> Tablets</span>
-                                <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-blue"></i> Mobiles</span>
-                            </p>
-                        </div>
-                        <div id="morris-area-with-dotted" style="height: 320px;" class="morris-chart my-3 mb-lg-0"></div>
-                    </div> <!-- end col -->
-
-                    <div class="col-lg-4">
-                        <h5 class="mt-0">iMacs <span class="text-muted float-right">70%</span></h5>
-                        <div class="progress progress-md">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <h5 class="mt-3">iBooks <span class="text-muted float-right">39%</span></h5>
-                        <div class="progress progress-md">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 39%;" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <h5 class="mt-3">iPhone 5s <span class="text-muted float-right">65%</span></h5>
-                        <div class="progress progress-md">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <h5 class="mt-3">iPhone 6 <span class="text-muted float-right">92%</span></h5>
-                        <div class="progress progress-md">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 92%;" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <h5 class="mt-3">iPhone X <span class="text-muted float-right">38%</span></h5>
-                        <div class="progress progress-md">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 38%;" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <div class="row text-center">
-                            <div class="col-6 mt-3">
-                                <h3 class="font-weight-light"> <i class="mdi mdi-cloud-download text-info"></i> 79%</h3>
-                                <p class="text-muted text-overflow">Per min user</p>
-                            </div> <!-- end col -->
-                            <div class="col-6 mt-3">
-                                <h3 class="font-weight-light"> <i class="mdi mdi-cloud-upload text-danger"></i> 23%</h3>
-                                <p class="text-muted text-overflow">Bounce Rate</p>
-                            </div> <!-- end col -->
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row-->
-            </div>  <!-- end card-box-->
-        </div> <!-- end col -->
     <div class="row">
         <div class="col-xl-6">
             <div class="card p-2">

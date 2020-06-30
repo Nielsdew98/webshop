@@ -7,26 +7,27 @@
         <div class="card-box">
             <div class="row mb-4">
                 <div class="col-lg-8">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="inputPassword2" class="sr-only">Search</label>
-                            <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                        </div>
-                        <div class="form-group mx-sm-3">
-                            <label for="status-select" class="mr-2">Sort By</label>
-                            <select class="custom-select" id="status-select">
-                                <option selected="">All</option>
-                                <option value="1">Popular</option>
-                                <option value="2">Price Low</option>
-                                <option value="3">Price High</option>
-                                <option value="4">Sold Out</option>
+                    <form method="post" action="{{route('sortAdmin')}}">
+                        @csrf
+                        @method('POST')
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Sort by:</label>
+                            </div>
+                            <select class="custom-select" name="sorting" id="status-select">
+                                <option value="all">All</option>
+                                <option value="az">az</option>
+                                <option value="za">za</option>
+                                <option value="prijsoplopend">Price Low</option>
+                                <option value="prijsaflopend">Price High</option>
+                                <option value="stockout">Sold Out</option>
                             </select>
+                            <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="text-lg-right mt-3 mt-lg-0">
-                        <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="fas fa-filter"></i></button>
                         <a href="{{route('products.create')}}" class="btn btn-danger waves-effect waves-light"><i class="fas fa-plus-circle
                         mr-1"></i> Product toevoegen</a>
                     </div>
@@ -95,5 +96,6 @@
                 @endforeach
             @endif
         </div>
+        {{$products->links()}}
     </div>
 @endsection

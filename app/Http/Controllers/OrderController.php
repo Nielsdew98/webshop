@@ -19,6 +19,7 @@ class OrderController extends Controller
 {
     //
     public function createOrder(Request $request){
+        $deliveryprice = 0;
         switch($request->deliver_method){
             case $request->deliver_method =='postpunt':
                 $deliveryprice = 3;

@@ -175,4 +175,40 @@ class AdminProductsController extends Controller
 
       return redirect('admin/products');
     }
+    public function sortAdmin(Request $request){
+        switch ($request->sorting){
+            case 'all':
+                $products = Product::with('default_image','reviews')->withTrashed()->paginate(8);
+                return view('admin.products.index',compact('products'));
+            case 'az':
+                $products = Product::orderBy('title','ASC')->where('is_active',1)->withTrashed()->paginate(8);
+                return view('admin.products.index',compact('products'));
+            case 'za':
+                $products = Product::orderBy('title','DESC')->where('is_active',1)->withTrashed()->paginate(8);
+                $categories = Category::select('name','id')->get();
+                return view('admin.products.index',compact('products'));
+            case 'prijsoplopend':
+                $products = Product::orderBy('price','ASC')->where('is_active',1)->withTrashed()->paginate(8);;
+                return view('admin.products.index',compact('products'));
+            case 'prijsaflopend':
+                $products = Product::orderBy('price','DESC')->where('is_active',1)->withTrashed()->paginate(8);;
+                return view('admin.products.index',compact('products'));
+            case 'stockout':
+                //$products = Product::with('stock')->where('stock',0)->paginate(8);
+                $count = count(Product::whereHas('stock', function ($query) {
+                    return $query->where('stock', '=', 0);
+                })->get());
+                if ($count > 0){
+                    $products = Product::whereHas('stock', function ($query) {
+                        return $query->where('stock', '=', 0);
+                    })->paginate(8);
+                    return view('admin.products.index',compact('products'));
+                }else{
+                    $products = Product::with('default_image','reviews')->withTrashed()->paginate(8);
+                    return view('admin.products.index',compact('products'));
+                }
+
+        }
+
+    }
 }

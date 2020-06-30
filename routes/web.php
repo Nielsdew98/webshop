@@ -32,6 +32,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/reviews','AdminReviewsController');
     Route::resource('admin/awards','AdminAwardsController');
     Route::resource('admin/products','AdminProductsController');
+    Route::post('/admin/products','AdminProductsController@sortAdmin')->name('sortAdmin');
     Route::resource('admin/discounts','AdminDiscountsController');
     Route::get('admin/orders','OrderController@index')->name('adminorder.index');
 });

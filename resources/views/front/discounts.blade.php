@@ -3,9 +3,32 @@
     Discounts
 @endsection
 @section('content')
-    <section id="shop">
-        <div class="col-12 col-lg-10 offset-lg-1 my-6">
+        <div class="col-12 col-lg-10 offset-lg-1">
             <div class="row">
+                <div class="col-lg-2 col-12">
+                    <div id="accordion2" class="mb-4 p-4 d-block">
+                        <div class="card">
+                            <div class="card-header p-0" id="headingOne2">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                        Categorieën
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordion2">
+                                <div class="card-body d-flex flex-column">
+                                    <a href="{{route('shopPage')}}">All</a>
+                                    @foreach($categories as $category)
+                                        <a href="{{route('productsPerCategory',$category->id)}}">{{$category->name}}</a>
+                                        @endforeach
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-10 col-12">
                     <div class="row">
                         <div class="col-lg-6 col-12 mb-4">
@@ -23,41 +46,51 @@
                                         <option value="36">36</option>
                                         <option value="doorlopend">doorlopend</option>
                                     </select>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
+
+                            </form>
+                        </div>
+                        <div class="col-lg-6 col-12 mb-4">
+                            <form action="{{route('sort')}}" method="POST">
+                                @method('POST')
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect02">Sorteer volgens:</label>
+                                    </div>
+                                    <select class="custom-select" name="sort" id="inputGroupSelect02">
+                                        <option selected>Choose...</option>
+                                        <option value="az">A-Z</option>
+                                        <option value="za">Z-A</option>
+                                        <option value="prijsoplopend">Prijs oplopend</option>
+                                        <option value="prijsaflopend">Prijs aflopend</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-filter"></i></button>
+                                </div>
                             </form>
 
                         </div>
-                        <div class="col-lg-6 col-12 mb-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect02">Sorteer volgens:</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect02">
-                                    <option selected>Choose...</option>
-                                    <option value="az">A-Z</option>
-                                    <option value="za">Z-A</option>
-                                    <option value="prijsoplopend">Prijs oplopend</option>
-                                    <option value="prijsaflopend">Prijs aflopend</option>
-                                    <option value="leeftijdoplopend">Leeftijd oplopend</option>
-                                    <option value="leeftijdaflopend">Leeftijd aflopend</option>
-                                </select>
-                            </div>
-                        </div>
-                        @if($discounts)
-                            @foreach($discounts as $discount)
+                        @if($products)
+                            @foreach($products as $product)
                                 <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
                                     <article class="product text-center position-relative">
                                         <section class="product-image">
-                                            <a href="{{route('productDetailPage',$discount->product->slug)}}">
-                                                <img class="pic-1 img-fluid" alt="doos gloomhaven" src="{{asset
-                                                ($discount->product->default_image->file)}}">
+                                            <a href="{{route('productDetailPage',$product->slug)}}">
+                                                <img class="pic-1 img-fluid" alt="{{$product->title}}" src="{{asset($product->default_image->file)}}">
                                             </a>
                                         </section>
                                         <section class="product-content p-3">
-                                            <h3 class="title"><a href="#">{{$discount->product->title}}</a></h3>
+                                            <h3 class="title"><a href="#">{{$product->title}}</a></h3>
                                             <div class="price">
-                                                <span>€{{$discount->product->price}}</span>
+                                                @if($product->discount != null)
+                                                    <p><span class="d-inline"><del>€{{$product->price}} </del></span><span class="ml-3
+                                                        prijs
+                                                         d-inline">€{{round($product->price - ($product->price / 100 *
+                                                         $product->discount->percent),2)}}</span></p>
+                                                @else
+                                                    <p class="prijs">€{{$product->price}}</p>
+                                                @endif
                                             </div>
                                         </section>
                                         <ul class="social p-0 m-0  d-flex">
@@ -67,8 +100,8 @@
                                                    class="quickView d-flex align-items-center justify-content-center border rounded mx-2 position-relative d-block"><i
                                                         class="fa fa-search"></i></a>
                                             </li>
-                                            <li><a href="{{route('addToCart',$discount->id)}}" data-toggle="tooltip" data-placement="bottom" title="Toevoegen aan winkelmand"
-                                                   class="text-center border rounded mx-2 position-relative d-block">
+                                            <li><a href="{{route('addToCart',$product->id)}}" data-toggle="tooltip" data-placement="bottom" title="Toevoegen aan winkelmand"
+                                                   class="text-center border rounded mx-2 position-relative d-block d-flex align-items-center justify-content-center">
                                                     <i class="fa fa-shopping-bag"></i></a></li>
                                         </ul>
                                     </article>
@@ -119,5 +152,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 @endsection
+

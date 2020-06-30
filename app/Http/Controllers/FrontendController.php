@@ -82,8 +82,8 @@ class FrontendController extends Controller
     }
     //shoppage
     public function shop(){
-        $products = Product::paginate(8)->where('is_active',1);
         $categories = Category::select('name','id')->get();
+        $products = Product::where('is_active',1)->paginate(8);
         return view('front.shop',compact('products','categories'));
     }
     public function productsPerCategory($id){
@@ -99,14 +99,13 @@ class FrontendController extends Controller
             $categories = Category::select('name','id')->get();
             return view('front.shop',compact('products','categories'));
         }else{
-            $products = Product::paginate($request->qtyproduct)->where('is_active',1);
             $categories = Category::select('name','id')->get();
+            $products = Product::where('is_active',1)->paginate($request->qtyproduct);
             return view('front.shop',compact('products','categories'));
         }
 
     }
     public function sort(Request $request){
-
         switch ($request->sort){
             case 'az':
                 $products = Product::orderBy('title','ASC')->where('is_active',1)->paginate(8);
@@ -161,6 +160,13 @@ class FrontendController extends Controller
     }
 
     public function newsletter(Request $request){
-            Newsletter::create($request);
+        if ($request->email = Newsletter::where('email',$request->email)->first()){
+            return redirect()->back()->with('newsletter', 'You are already subscribed for the newsletter!');
+        }else{
+            $input = $request->all();
+            Newsletter::create($input);
+            return redirect()->back()->with('newsletter', 'You are succesfully subscribed for the newsletter!');
+        }
+
     }
 }

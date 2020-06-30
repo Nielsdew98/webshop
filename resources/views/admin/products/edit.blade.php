@@ -106,7 +106,6 @@
                             <label class="ownlabel">Stock</label>
                         </div>
                     </div>
-
                 </div>
             </div> <!-- end col-->
         </div>

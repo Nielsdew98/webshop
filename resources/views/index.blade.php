@@ -3,6 +3,14 @@
     BoardGamers Delight
 @endsection
 @section('content')
+    <script type="text/javascript">
+        var msg = '{{Session::get('newsletter')}}';
+        var exist = '{{Session::has('newsletter')}}';
+        if(exist){
+            alert(msg);
+        }
+
+    </script>
     <div class="container-fluid text-center px-0">
     <section id="banner" class="position-relative">
         <section id="bannertekst" class="absolutemiddle text-center">
@@ -85,61 +93,6 @@
                             </div>
                         @endforeach
                     @endif
-               {{--     @if($newproducts)
-                        @for($i=0;$i<count($newproducts);$i++)
-                            @if($i = 1)
-                                <div class="col-lg-8 my-3">
-                                    <article class="cube">
-                                        <div class="foto position-relative">
-                                            <img class="img-fluid" alt="{{$newproducts[$i]->title}}" src="{{asset($newproducts[$i]->default_image->file)}}">
-                                        </div>
-                                        <div class="producttekst w-100">
-                                            <header>
-                                                <h3>{{$newproducts[$i]->title}}</h3>
-                                            </header>
-                                            <p>{{$newproducts[$i]->price}}</p>
-                                            <a class="btnhover" href="{{route('productDetailPage',\App\Product::findOrFail($newproducts[$i]->id)->slug)}}">Meer info</a>
-                                        </div>
-                                    </article>
-                                </div>
-                            @elseif($i=1)
-                                <div class="col-lg-4 my-3">
-                                    <div class="row mx-0">
-                                        <div class="col-12">
-                                            <article class="cube">
-                                                <div class="foto position-relative">
-                                                    <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                                                </div>
-                                                <div class="producttekst w-100">
-                                                    <header>
-                                                        <h3>Gloomhaven</h3>
-                                                    </header>
-                                                    <p>€115</p>
-                                                    <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                                                </div>
-                                            </article>
-                                        </div>
-                            @elseif($i = 2)
-                                            <div class="col-12 mt-4">
-                                                <article class="cube">
-                                                    <div class="foto position-relative">
-                                                        <img class="img-fluid" src="https://placekitten.com/g/800/800" alt="">
-                                                    </div>
-                                                    <div class="producttekst w-100">
-                                                        <header>
-                                                            <h3>Gloomhaven</h3>
-                                                        </header>
-                                                        <p>€115</p>
-                                                        <button class="btnhover" onclick="window.location.href='product.html';">Meer info</button>
-                                                    </div>
-                                                </article>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                        @endfor
-                    @endif--}}
         </section>
         <section id="qoute" class="w-100 mx-0 my-6">
             <h2 id="text">"We don't stop playing because we grow old.<br>
@@ -305,13 +258,7 @@
                                 <p><span class="d-inline"><del>€{{$discount->product->price}} </del></span><span class="ml-3 prijs
                                 d-inline">€{{$discount->product->price - ($discount->product->price / 100 * $discount->percent)}}</span></p>
                                 <div>
-                                    <ul>
-                                        <li class="p-2"><span id="days"></span>days</li>
-                                        <li class="p-2"><span id="hours"></span>Hours</li>
-                                        <li class="p-2"><span id="minutes"></span>Minutes</li>
-                                        <li class="p-2"><span id="seconds"></span>Seconds</li>
-                                        <p class="prijs text-center">Profiteer nog snel van deze promotie!</p>
-                                    </ul>
+                                    <p class="prijs text-center">Profiteer nog snel van deze promotie!</p>
                                 </div>
                                 <div class="row mx-auto">
                                     <a class="btnhover mr-2" href="{{route('addToCart',$discount->product->id)}}">Aan winkelmand toevoegen</a>
@@ -354,7 +301,7 @@
                                 @method('POST')
                                 <h2 class="my-3 text-uppercase">Abonneer je op onze nieuwsbrief</h2>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Vul hier je email in">
+                                    <input type="email" class="form-control" name="email" placeholder="Vul hier je email in">
                                     <span class="input-group-btn">
                                     <button class="btnnews" type="submit">Abonneer nu</button>
                                 </span>
@@ -365,7 +312,5 @@
                 </div>
             </div>
         </section>
-
-
 </div>
 @endsection
