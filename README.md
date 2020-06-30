@@ -8,10 +8,6 @@
 </p>
 
 
-##Voor Tom
-Voor het bestaalsysteem merk ik dat hij mijn api key in de .Env file niet uploadt dus bij deze zou je deze zin nog moeten kopiëren in de env file:
-MOLLIE_KEY=test_b2M52z8ERDTHbUHqjdGDkQqN8qdTw6
-
 ## About Laravel
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
